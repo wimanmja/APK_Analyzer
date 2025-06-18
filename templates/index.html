@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APK Security Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            APK Security Analyzer
+        </h1>
+        <p class="subtitle">Comprehensive Android APK security analysis tool</p>
+    </header>
+
+    <main>
+        <!-- Upload Page -->
+        <div id="uploadPage" class="page active">
+            <div class="card">
+                <h2>Upload APK File</h2>
+                <p class="description">Upload your Android APK file for comprehensive security analysis</p>
+                
+                <form id="uploadForm">
+                    <div id="uploadArea" class="upload-area">
+                        <div class="upload-icon">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <path d="M12 18v-6"></path>
+                                <path d="M9 15l3-3 3 3"></path>
+                            </svg>
+                        </div>
+                        <p class="upload-text">Drag and drop your APK file here, or</p>
+                        <span class="browse-text">browse files</span>
+                        <input type="file" id="fileInput" name="file" accept=".apk" required>
+                        <div id="fileName" class="file-name" style="display: none;"></div>
+                    </div>
+
+                    <button type="submit" id="submitButton" class="button">
+                        <svg class="icon" style="width: 1rem; height: 1rem;" viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        Analyze APK
+                    </button>
+                </form>
+            </div>
+
+            <div id="loadingContainer" class="loading-container">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Analyzing APK... Please wait.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Page -->
+        <div id="summaryPage" class="page">
+            <div class="page-header">
+                <div class="page-title">
+                    <h2>Analysis Summary</h2>
+                    <p id="apkName" class="apk-name"></p>
+                </div>
+                <div class="page-actions">
+                    <button class="button secondary" onclick="showUploadPage()">New Analysis</button>
+                    <button class="button" onclick="console.log('Button clicked'); showDetailPage()">View Details</button>
+                </div>
+            </div>
+
+            <div class="summary-grid">
+                <!-- Security Score Card -->
+                <div class="card score-card">
+                    <h3>Security Score</h3>
+                    <div id="securityScore" class="score-display">
+                        <div class="score-number">--</div>
+                        <div class="score-level">--</div>
+                    </div>
+                </div>
+
+                <!-- APK Info Card -->
+                <div class="card">
+                    <h3>APK Information</h3>
+                    <div id="apkInfo" class="info-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Permissions Summary Card -->
+                <div class="card">
+                    <h3>Permissions Summary</h3>
+                    <div id="permissionsSummary" class="permissions-summary">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Obfuscation Status Card -->
+                <div class="card">
+                    <h3>Code Obfuscation</h3>
+                    <div id="obfuscationStatus" class="obfuscation-status">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Findings -->
+            <div class="card">
+                <h3>Key Findings</h3>
+                <div id="keyFindings" class="findings-list">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Detail Page -->
+        <div id="detailPage" class="page">
+            <div class="page-header">
+                <div class="page-title">
+                    <h2>Detailed Analysis</h2>
+                    <p id="detailApkName" class="apk-name"></p>
+                </div>
+                <div class="page-actions">
+                    <button class="button secondary" onclick="showSummaryPage()">Back to Summary</button>
+                    <button class="button secondary" onclick="downloadReport()">Download Report</button>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTab('permissions')">Permissions</button>
+                <button class="tab-button" onclick="showTab('obfuscation')">Obfuscation</button>
+                <button class="tab-button" onclick="showTab('manifest')">Manifest</button>
+                <button class="tab-button" onclick="showTab('files')">File Structure</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="permissionsTab" class="tab-content active">
+                <div class="card">
+                    <h3>All Permissions</h3>
+                    <div id="permissionsList" class="permissions-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="obfuscationTab" class="tab-content">
+                <div class="card">
+                    <h3>Obfuscation Analysis</h3>
+                    <div id="obfuscationDetails" class="obfuscation-details">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="manifestTab" class="tab-content">
+                <div class="card">
+                    <h3>AndroidManifest.xml</h3>
+                    <div id="manifestContent" class="manifest-content">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="filesTab" class="tab-content">
+                <div class="card">
+                    <h3>File Structure</h3>
+                    <div id="fileStructure" class="file-structure">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Container -->
+        <div id="messageContainer" style="display: none;" class="message">
+            <svg id="messageIcon" class="icon" style="width: 1.25rem; height: 1.25rem;" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span id="messageText"></span>
+        </div>
+    </main>
+
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

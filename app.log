@@ -1,0 +1,809 @@
+2025-06-16 04:25:53,514 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-16 04:25:53,545 - INFO - Loaded 1340 permission entries
+2025-06-16 04:25:53,547 - INFO - All services initialized successfully
+2025-06-16 04:25:53,550 - INFO - Web components initialized successfully
+2025-06-16 04:25:53,551 - INFO - APK Analyzer application initialized successfully
+2025-06-16 04:25:53,551 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-16 04:25:53,571 - INFO -  * Restarting with stat
+2025-06-16 04:25:55,858 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-16 04:25:55,877 - INFO - Loaded 1340 permission entries
+2025-06-16 04:25:55,877 - INFO - All services initialized successfully
+2025-06-16 04:25:55,881 - INFO - Web components initialized successfully
+2025-06-16 04:25:55,881 - INFO - APK Analyzer application initialized successfully
+2025-06-16 04:25:55,881 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-16 04:25:55,892 - WARNING -  * Debugger is active!
+2025-06-16 04:25:55,912 - INFO -  * Debugger PIN: 948-519-497
+2025-06-16 04:26:04,331 - INFO - Client connected
+2025-06-16 04:26:17,739 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750022777.apk
+2025-06-16 04:26:17,741 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750022777.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750022777 -f
+2025-06-16 04:26:19,326 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750022777.apk with 8 thread(s).
+2025-06-16 04:26:19,375 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 04:26:19,393 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 04:26:19,843 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 04:26:19,994 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 04:26:25,871 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 04:26:26,279 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 04:26:26,292 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 04:26:26,638 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 04:26:26,677 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 04:26:26,699 - DEBUG - stdout: I: Copying original files...
+2025-06-16 04:26:26,819 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 04:26:26,918 - INFO - Found 12 permissions
+2025-06-16 04:26:26,918 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 04:26:45,979 - INFO - Scanned 2039 code files
+2025-06-16 04:26:48,606 - DEBUG - Obfuscation results sent to client
+2025-06-16 07:56:39,050 - INFO - Client disconnected
+2025-06-16 11:28:42,720 - INFO - Client connected
+2025-06-16 11:31:22,258 - INFO - Client disconnected
+2025-06-16 11:31:22,712 - INFO - Client connected
+2025-06-16 11:31:29,066 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048289.apk
+2025-06-16 11:31:29,068 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048289.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048289 -f
+2025-06-16 11:31:29,497 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048289.apk with 8 thread(s).
+2025-06-16 11:31:29,543 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 11:31:29,551 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 11:31:30,009 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 11:31:30,060 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 11:31:38,396 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 11:31:38,842 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 11:31:38,853 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 11:31:39,265 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 11:31:39,306 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 11:31:39,323 - DEBUG - stdout: I: Copying original files...
+2025-06-16 11:31:39,431 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 11:31:39,547 - INFO - Found 12 permissions
+2025-06-16 11:31:39,549 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 11:32:00,391 - INFO - Scanned 2039 code files
+2025-06-16 11:32:03,088 - DEBUG - Obfuscation results sent to client
+2025-06-16 11:36:35,400 - INFO - Client disconnected
+2025-06-16 11:36:36,035 - INFO - Client connected
+2025-06-16 11:36:43,941 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048603.apk
+2025-06-16 11:36:43,943 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048603.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048603 -f
+2025-06-16 11:36:44,298 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048603.apk with 8 thread(s).
+2025-06-16 11:36:44,341 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 11:36:44,352 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 11:36:44,738 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 11:36:44,796 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 11:36:50,426 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 11:36:50,986 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 11:36:50,999 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 11:36:51,401 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 11:36:51,455 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 11:36:51,478 - DEBUG - stdout: I: Copying original files...
+2025-06-16 11:36:51,612 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 11:36:51,713 - INFO - Found 12 permissions
+2025-06-16 11:36:51,714 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 11:37:09,481 - INFO - Scanned 2039 code files
+2025-06-16 11:37:12,159 - DEBUG - Obfuscation results sent to client
+2025-06-16 11:42:13,412 - INFO - Client disconnected
+2025-06-16 11:42:13,948 - INFO - Client connected
+2025-06-16 11:42:22,700 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048942.apk
+2025-06-16 11:42:22,701 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048942.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048942 -f
+2025-06-16 11:42:23,103 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750048942.apk with 8 thread(s).
+2025-06-16 11:42:23,147 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 11:42:23,153 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 11:42:23,480 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 11:42:23,582 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 11:42:29,735 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 11:42:30,219 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 11:42:30,233 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 11:42:30,599 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 11:42:30,653 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 11:42:30,672 - DEBUG - stdout: I: Copying original files...
+2025-06-16 11:42:30,819 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 11:42:30,906 - INFO - Found 12 permissions
+2025-06-16 11:42:30,907 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 11:42:49,169 - INFO - Scanned 2039 code files
+2025-06-16 11:42:51,827 - DEBUG - Obfuscation results sent to client
+2025-06-16 11:54:03,757 - INFO - Client disconnected
+2025-06-16 11:54:40,166 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-16 11:54:40,190 - INFO - Loaded 1340 permission entries
+2025-06-16 11:54:40,192 - INFO - All services initialized successfully
+2025-06-16 11:54:40,196 - INFO - Web components initialized successfully
+2025-06-16 11:54:40,196 - INFO - APK Analyzer application initialized successfully
+2025-06-16 11:54:40,197 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-16 11:54:40,213 - INFO -  * Restarting with stat
+2025-06-16 11:54:42,938 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-16 11:54:42,979 - INFO - Loaded 1340 permission entries
+2025-06-16 11:54:42,980 - INFO - All services initialized successfully
+2025-06-16 11:54:42,985 - INFO - Web components initialized successfully
+2025-06-16 11:54:42,985 - INFO - APK Analyzer application initialized successfully
+2025-06-16 11:54:42,986 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-16 11:54:43,001 - WARNING -  * Debugger is active!
+2025-06-16 11:54:43,034 - INFO -  * Debugger PIN: 948-519-497
+2025-06-16 12:04:05,654 - INFO - Client connected
+2025-06-16 12:04:12,587 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750050252.apk
+2025-06-16 12:04:12,589 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750050252.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750050252 -f
+2025-06-16 12:04:12,965 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750050252.apk with 8 thread(s).
+2025-06-16 12:04:13,030 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 12:04:13,040 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 12:04:13,701 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 12:04:13,831 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 12:04:25,682 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 12:04:26,982 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 12:04:27,031 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 12:04:27,733 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 12:04:27,820 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 12:04:27,862 - DEBUG - stdout: I: Copying original files...
+2025-06-16 12:04:28,074 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 12:04:28,224 - INFO - Found 12 permissions
+2025-06-16 12:04:28,227 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 12:04:48,143 - INFO - Scanned 2039 code files
+2025-06-16 12:04:51,255 - DEBUG - Obfuscation results sent to client
+2025-06-16 12:04:51,361 - INFO - Client disconnected
+2025-06-16 12:04:53,349 - INFO - Client connected
+2025-06-16 12:07:02,341 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750050422.apk
+2025-06-16 12:07:02,342 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750050422.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750050422 -f
+2025-06-16 12:07:03,228 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750050422.apk with 8 thread(s).
+2025-06-16 12:07:03,264 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 12:07:03,273 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 12:07:03,625 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 12:07:03,709 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 12:07:10,352 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 12:07:10,927 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 12:07:10,944 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 12:07:11,356 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 12:07:11,408 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 12:07:11,433 - DEBUG - stdout: I: Copying original files...
+2025-06-16 12:07:11,566 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 12:07:11,680 - INFO - Found 12 permissions
+2025-06-16 12:07:11,680 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 12:07:29,395 - INFO - Scanned 2039 code files
+2025-06-16 12:07:32,339 - DEBUG - Obfuscation results sent to client
+2025-06-16 12:09:20,545 - INFO - Client disconnected
+2025-06-16 12:09:20,938 - INFO - Client connected
+2025-06-16 12:09:31,355 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-16 12:09:31,387 - INFO - Loaded 1340 permission entries
+2025-06-16 12:09:31,388 - INFO - All services initialized successfully
+2025-06-16 12:09:31,392 - INFO - Web components initialized successfully
+2025-06-16 12:09:31,392 - INFO - APK Analyzer application initialized successfully
+2025-06-16 12:09:31,392 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-16 12:09:31,409 - INFO -  * Restarting with stat
+2025-06-16 12:09:34,021 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-16 12:09:34,049 - INFO - Loaded 1340 permission entries
+2025-06-16 12:09:34,050 - INFO - All services initialized successfully
+2025-06-16 12:09:34,054 - INFO - Web components initialized successfully
+2025-06-16 12:09:34,055 - INFO - APK Analyzer application initialized successfully
+2025-06-16 12:09:34,055 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-16 12:09:34,070 - WARNING -  * Debugger is active!
+2025-06-16 12:09:34,086 - INFO -  * Debugger PIN: 948-519-497
+2025-06-16 12:16:44,448 - INFO - Client connected
+2025-06-16 12:17:00,804 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750051020.apk
+2025-06-16 12:17:00,805 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750051020.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750051020 -f
+2025-06-16 12:17:01,414 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750051020.apk with 8 thread(s).
+2025-06-16 12:17:01,473 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 12:17:01,497 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 12:17:01,934 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 12:17:02,017 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 12:17:08,970 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 12:17:09,549 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 12:17:09,562 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 12:17:09,966 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 12:17:10,033 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 12:17:10,060 - DEBUG - stdout: I: Copying original files...
+2025-06-16 12:17:10,215 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 12:17:10,335 - INFO - Found 12 permissions
+2025-06-16 12:17:10,336 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 12:17:30,934 - INFO - Scanned 2039 code files
+2025-06-16 12:17:33,748 - DEBUG - Obfuscation results sent to client
+2025-06-16 12:17:33,841 - INFO - Client disconnected
+2025-06-16 12:17:33,845 - INFO - Client connected
+2025-06-16 12:23:18,510 - INFO - Client disconnected
+2025-06-16 12:23:19,085 - INFO - Client connected
+2025-06-16 12:23:25,714 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750051405.apk
+2025-06-16 12:23:25,715 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750051405.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750051405 -f
+2025-06-16 12:23:26,796 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750051405.apk with 8 thread(s).
+2025-06-16 12:23:26,835 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 12:23:26,844 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 12:23:27,232 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 12:23:27,355 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 12:23:35,822 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 12:23:36,914 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 12:23:36,978 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 12:23:37,449 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 12:23:37,516 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 12:23:37,552 - DEBUG - stdout: I: Copying original files...
+2025-06-16 12:23:37,729 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 12:23:37,880 - INFO - Found 12 permissions
+2025-06-16 12:23:37,885 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 12:24:08,735 - INFO - Scanned 2039 code files
+2025-06-16 12:24:11,923 - DEBUG - Obfuscation results sent to client
+2025-06-16 12:24:12,028 - INFO - Client disconnected
+2025-06-16 12:24:12,082 - INFO - Client connected
+2025-06-16 12:46:56,104 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750052816.apk
+2025-06-16 12:46:56,105 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750052816.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750052816 -f
+2025-06-16 12:46:56,489 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750052816.apk with 8 thread(s).
+2025-06-16 12:46:56,542 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 12:46:56,551 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 12:46:57,055 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 12:46:57,105 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 12:47:02,879 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 12:47:03,379 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 12:47:03,393 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 12:47:03,808 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 12:47:03,854 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 12:47:03,884 - DEBUG - stdout: I: Copying original files...
+2025-06-16 12:47:04,010 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 12:47:04,114 - INFO - Found 12 permissions
+2025-06-16 12:47:04,116 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 12:47:22,407 - INFO - Scanned 2039 code files
+2025-06-16 12:47:25,003 - DEBUG - Obfuscation results sent to client
+2025-06-16 13:12:38,357 - INFO - Client disconnected
+2025-06-16 13:18:22,040 - INFO - Client connected
+2025-06-16 13:53:01,970 - INFO - Client disconnected
+2025-06-16 14:06:06,076 - INFO - Client connected
+2025-06-16 14:45:28,458 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750059928.apk
+2025-06-16 14:45:28,465 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750059928.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750059928 -f
+2025-06-16 14:45:29,134 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750059928.apk with 8 thread(s).
+2025-06-16 14:45:29,309 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 14:45:29,320 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 14:45:29,902 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 14:45:29,972 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 14:45:36,453 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 14:45:36,947 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 14:45:36,960 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 14:45:37,375 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 14:45:37,423 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 14:45:37,447 - DEBUG - stdout: I: Copying original files...
+2025-06-16 14:45:37,588 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 14:45:37,701 - INFO - Found 12 permissions
+2025-06-16 14:45:37,703 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 14:46:01,149 - INFO - Scanned 2039 code files
+2025-06-16 14:46:04,117 - DEBUG - Obfuscation results sent to client
+2025-06-16 14:46:04,417 - INFO - Client disconnected
+2025-06-16 14:46:04,571 - INFO - Client connected
+2025-06-16 15:38:30,774 - INFO - Client disconnected
+2025-06-16 17:05:56,214 - INFO - Client connected
+2025-06-16 17:06:09,792 - INFO - Client disconnected
+2025-06-16 17:06:10,236 - INFO - Client connected
+2025-06-16 17:06:15,257 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750068375.apk
+2025-06-16 17:06:15,259 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750068375.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750068375 -f
+2025-06-16 17:06:15,707 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750068375.apk with 8 thread(s).
+2025-06-16 17:06:15,796 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-16 17:06:15,806 - DEBUG - stdout: I: Loading resource table...
+2025-06-16 17:06:16,310 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-16 17:06:16,353 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-16 17:06:29,146 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-16 17:06:29,678 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-16 17:06:29,695 - DEBUG - stdout: I: Regular manifest package...
+2025-06-16 17:06:30,173 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-16 17:06:30,339 - DEBUG - stdout: I: Copying unknown files...
+2025-06-16 17:06:30,366 - DEBUG - stdout: I: Copying original files...
+2025-06-16 17:06:30,525 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-16 17:06:30,646 - INFO - Found 12 permissions
+2025-06-16 17:06:30,648 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-16 17:06:52,429 - INFO - Scanned 2039 code files
+2025-06-16 17:06:55,645 - DEBUG - Obfuscation results sent to client
+2025-06-16 17:06:55,754 - INFO - Client disconnected
+2025-06-16 17:06:56,333 - INFO - Client connected
+2025-06-16 17:19:44,599 - INFO - Client disconnected
+2025-06-17 10:20:07,543 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-17 10:20:07,611 - INFO - Loaded 1340 permission entries
+2025-06-17 10:20:07,612 - INFO - All services initialized successfully
+2025-06-17 10:20:07,617 - INFO - Web components initialized successfully
+2025-06-17 10:20:07,618 - INFO - APK Analyzer application initialized successfully
+2025-06-17 10:20:07,619 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-17 10:20:07,771 - INFO -  * Restarting with stat
+2025-06-17 10:20:13,304 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-17 10:20:13,345 - INFO - Loaded 1340 permission entries
+2025-06-17 10:20:13,346 - INFO - All services initialized successfully
+2025-06-17 10:20:13,355 - INFO - Web components initialized successfully
+2025-06-17 10:20:13,357 - INFO - APK Analyzer application initialized successfully
+2025-06-17 10:20:13,357 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-17 10:20:13,376 - WARNING -  * Debugger is active!
+2025-06-17 10:20:13,398 - INFO -  * Debugger PIN: 948-519-497
+2025-06-17 10:20:13,894 - INFO - Client connected
+2025-06-17 10:20:59,197 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750130459.apk
+2025-06-17 10:20:59,198 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750130459.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750130459 -f
+2025-06-17 10:21:01,084 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750130459.apk with 8 thread(s).
+2025-06-17 10:21:01,153 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 10:21:01,155 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 10:21:01,738 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 10:21:01,954 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 10:21:14,927 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 10:21:15,784 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 10:21:15,818 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 10:21:16,389 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 10:21:16,483 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 10:21:16,520 - DEBUG - stdout: I: Copying original files...
+2025-06-17 10:21:16,791 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 10:21:16,959 - INFO - Found 12 permissions
+2025-06-17 10:21:16,961 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 10:22:11,620 - INFO - Scanned 2039 code files
+2025-06-17 10:22:15,748 - DEBUG - Obfuscation results sent to client
+2025-06-17 10:22:15,903 - INFO - Client disconnected
+2025-06-17 10:22:15,942 - INFO - Client connected
+2025-06-17 10:33:15,156 - INFO - Client disconnected
+2025-06-17 10:39:55,805 - INFO - Client connected
+2025-06-17 10:52:11,689 - INFO - Client disconnected
+2025-06-17 11:30:15,164 - INFO - Client connected
+2025-06-17 12:24:11,407 - INFO - Client disconnected
+2025-06-17 12:24:14,180 - INFO - Client connected
+2025-06-17 12:24:21,222 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750137861.apk
+2025-06-17 12:24:21,224 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750137861.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750137861 -f
+2025-06-17 12:24:25,501 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750137861.apk with 8 thread(s).
+2025-06-17 12:24:25,560 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 12:24:25,568 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 12:24:26,147 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 12:24:26,585 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 12:24:37,937 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 12:24:38,747 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 12:24:38,766 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 12:24:39,360 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 12:24:39,463 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 12:24:39,504 - DEBUG - stdout: I: Copying original files...
+2025-06-17 12:24:39,799 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 12:24:40,003 - INFO - Found 12 permissions
+2025-06-17 12:24:40,007 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 12:25:24,556 - INFO - Scanned 2039 code files
+2025-06-17 12:25:28,662 - DEBUG - Obfuscation results sent to client
+2025-06-17 12:25:28,938 - INFO - Client disconnected
+2025-06-17 12:25:28,975 - INFO - Client connected
+2025-06-17 12:57:07,453 - INFO - Client disconnected
+2025-06-17 14:46:09,766 - INFO - Client connected
+2025-06-17 14:46:58,893 - INFO - Client disconnected
+2025-06-17 14:46:59,424 - INFO - Client connected
+2025-06-17 14:47:06,400 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750146426.apk
+2025-06-17 14:47:06,402 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750146426.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750146426 -f
+2025-06-17 14:47:07,940 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750146426.apk with 8 thread(s).
+2025-06-17 14:47:07,983 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 14:47:08,002 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 14:47:08,356 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 14:47:08,511 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 14:47:14,207 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 14:47:14,602 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 14:47:14,612 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 14:47:14,955 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 14:47:15,002 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 14:47:15,030 - DEBUG - stdout: I: Copying original files...
+2025-06-17 14:47:15,184 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 14:47:15,321 - INFO - Found 12 permissions
+2025-06-17 14:47:15,324 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 14:47:47,197 - INFO - Scanned 2039 code files
+2025-06-17 14:47:50,363 - DEBUG - Obfuscation results sent to client
+2025-06-17 14:47:50,474 - INFO - Client disconnected
+2025-06-17 14:47:50,480 - INFO - Client connected
+2025-06-17 15:06:28,035 - INFO - Client disconnected
+2025-06-17 15:16:46,744 - INFO - Client connected
+2025-06-17 15:23:17,853 - INFO - Client disconnected
+2025-06-17 15:23:18,250 - INFO - Client connected
+2025-06-17 15:23:23,013 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750148603.apk
+2025-06-17 15:23:23,014 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750148603.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750148603 -f
+2025-06-17 15:23:23,408 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750148603.apk with 8 thread(s).
+2025-06-17 15:23:23,456 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 15:23:23,466 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 15:23:23,928 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 15:23:23,994 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 15:23:29,243 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 15:23:29,688 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 15:23:29,699 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 15:23:30,063 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 15:23:30,100 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 15:23:30,122 - DEBUG - stdout: I: Copying original files...
+2025-06-17 15:23:30,256 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 15:23:30,354 - INFO - Found 12 permissions
+2025-06-17 15:23:30,356 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 15:23:49,884 - INFO - Scanned 2039 code files
+2025-06-17 15:23:52,732 - DEBUG - Obfuscation results sent to client
+2025-06-17 15:42:18,251 - INFO - Client disconnected
+2025-06-17 15:42:18,765 - INFO - Client connected
+2025-06-17 15:42:31,483 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750149751.apk
+2025-06-17 15:42:31,484 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750149751.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750149751 -f
+2025-06-17 15:42:31,835 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750149751.apk with 8 thread(s).
+2025-06-17 15:42:31,874 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 15:42:31,882 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 15:42:32,274 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 15:42:32,350 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 15:42:38,014 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 15:42:38,586 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 15:42:38,599 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 15:42:39,091 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 15:42:39,163 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 15:42:39,194 - DEBUG - stdout: I: Copying original files...
+2025-06-17 15:42:39,358 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 15:42:39,467 - INFO - Found 12 permissions
+2025-06-17 15:42:39,467 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 15:43:00,301 - INFO - Scanned 2039 code files
+2025-06-17 15:43:03,334 - DEBUG - Obfuscation results sent to client
+2025-06-17 16:07:28,061 - INFO - File saved at uploads\0efd90274fcafecd64dda6b73b5417537b9f5499a3046ee7d21bb65e0758e07d_1750151248.apk
+2025-06-17 16:07:28,062 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0efd90274fcafecd64dda6b73b5417537b9f5499a3046ee7d21bb65e0758e07d_1750151248.apk -o decompiled_output/0efd90274fcafecd64dda6b73b5417537b9f5499a3046ee7d21bb65e0758e07d_1750151248 -f
+2025-06-17 16:07:28,414 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0efd90274fcafecd64dda6b73b5417537b9f5499a3046ee7d21bb65e0758e07d_1750151248.apk with 8 thread(s).
+2025-06-17 16:07:29,797 - ERROR - AndroidManifest.xml not found at decompiled_output/0efd90274fcafecd64dda6b73b5417537b9f5499a3046ee7d21bb65e0758e07d_1750151248\AndroidManifest.xml
+2025-06-17 16:07:29,799 - INFO - Scanned 0 code files
+2025-06-17 16:07:29,800 - DEBUG - Obfuscation results sent to client
+2025-06-17 16:07:29,801 - WARNING - Could not extract APK info: [Errno 2] No such file or directory: 'decompiled_output/0efd90274fcafecd64dda6b73b5417537b9f5499a3046ee7d21bb65e0758e07d_1750151248\\AndroidManifest.xml'
+2025-06-17 16:07:29,802 - WARNING - Could not read manifest: [Errno 2] No such file or directory: 'decompiled_output/0efd90274fcafecd64dda6b73b5417537b9f5499a3046ee7d21bb65e0758e07d_1750151248\\AndroidManifest.xml'
+2025-06-17 16:07:29,803 - WARNING - Could not analyze components: [Errno 2] No such file or directory: 'decompiled_output/0efd90274fcafecd64dda6b73b5417537b9f5499a3046ee7d21bb65e0758e07d_1750151248\\AndroidManifest.xml'
+2025-06-17 16:07:55,068 - INFO - File saved at uploads\4c764cdf3ebd0b33152f510985d52a1755657a7d4474b4881b3852858b6d503d_1750151275.apk
+2025-06-17 16:07:55,069 - DEBUG - Running command: ApkTool\apktool.bat d uploads/4c764cdf3ebd0b33152f510985d52a1755657a7d4474b4881b3852858b6d503d_1750151275.apk -o decompiled_output/4c764cdf3ebd0b33152f510985d52a1755657a7d4474b4881b3852858b6d503d_1750151275 -f
+2025-06-17 16:07:56,133 - DEBUG - stdout: I: Using Apktool 2.10.0 on 4c764cdf3ebd0b33152f510985d52a1755657a7d4474b4881b3852858b6d503d_1750151275.apk with 8 thread(s).
+2025-06-17 16:07:56,167 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 16:07:56,176 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 16:07:56,572 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 16:07:56,712 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 16:08:01,294 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 16:08:01,625 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 16:08:01,632 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 16:08:02,071 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 16:08:02,108 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 16:08:02,150 - DEBUG - stdout: I: Copying original files...
+2025-06-17 16:08:02,362 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 16:08:02,482 - INFO - Found 12 permissions
+2025-06-17 16:08:02,483 - DEBUG - Permissions sent to client: [{'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.READ_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to read SMS messages.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_DATA_SYNC', 'protection_level': 'normal|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "dataSync".'}, {'name': 'c14.sbi2.u1.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 16:08:29,832 - INFO - Scanned 2070 code files
+2025-06-17 16:08:30,570 - DEBUG - Obfuscation results sent to client
+2025-06-17 16:08:30,647 - INFO - Client disconnected
+2025-06-17 16:08:30,675 - INFO - Client connected
+2025-06-17 16:26:59,334 - INFO - File saved at uploads\03b08971c35c5e20725d9f15ebc66433aab871be9a124b8c6cd176400d3ac131_1750152419.apk
+2025-06-17 16:26:59,337 - DEBUG - Running command: ApkTool\apktool.bat d uploads/03b08971c35c5e20725d9f15ebc66433aab871be9a124b8c6cd176400d3ac131_1750152419.apk -o decompiled_output/03b08971c35c5e20725d9f15ebc66433aab871be9a124b8c6cd176400d3ac131_1750152419 -f
+2025-06-17 16:26:59,950 - DEBUG - stdout: I: Using Apktool 2.10.0 on 03b08971c35c5e20725d9f15ebc66433aab871be9a124b8c6cd176400d3ac131_1750152419.apk with 8 thread(s).
+2025-06-17 16:27:00,038 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 16:27:00,056 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 16:27:00,629 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 16:27:00,713 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 16:27:11,362 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 16:27:12,012 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 16:27:12,028 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 16:27:12,583 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 16:27:12,662 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 16:27:12,689 - DEBUG - stdout: I: Copying original files...
+2025-06-17 16:27:12,889 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 16:27:13,032 - INFO - Found 12 permissions
+2025-06-17 16:27:13,035 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.xpyxmaqpen.sfmlcktvilwpvpunauagnrswjwqxribrplnmehs.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 16:28:08,102 - INFO - Scanned 1995 code files
+2025-06-17 16:28:11,534 - DEBUG - Obfuscation results sent to client
+2025-06-17 16:28:11,692 - INFO - Client disconnected
+2025-06-17 16:28:11,715 - INFO - Client connected
+2025-06-17 16:33:44,900 - INFO -  * Detected change in 'D:\\Kuliah PENS\\Kuliah Semester 7\\Proyek Akhir\\ApkAnalyzer\\web\\routes.py', reloading
+2025-06-17 16:33:46,551 - INFO -  * Restarting with stat
+2025-06-17 16:33:58,597 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-17 16:33:58,679 - INFO - Loaded 1340 permission entries
+2025-06-17 16:33:58,680 - INFO - All services initialized successfully
+2025-06-17 16:33:58,685 - INFO - Web components initialized successfully
+2025-06-17 16:33:58,686 - INFO - APK Analyzer application initialized successfully
+2025-06-17 16:33:58,691 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-17 16:33:58,797 - WARNING -  * Debugger is active!
+2025-06-17 16:33:58,814 - INFO -  * Debugger PIN: 948-519-497
+2025-06-17 16:33:59,380 - INFO - Client connected
+2025-06-17 16:34:10,381 - INFO - File saved at uploads\6cba23ca54a980143fc91888572f154050f936fb11e3077a509e19e2b87ebc5d_1750152850.apk
+2025-06-17 16:34:10,383 - DEBUG - Running command: ApkTool\apktool.bat d uploads/6cba23ca54a980143fc91888572f154050f936fb11e3077a509e19e2b87ebc5d_1750152850.apk -o decompiled_output/6cba23ca54a980143fc91888572f154050f936fb11e3077a509e19e2b87ebc5d_1750152850 -f
+2025-06-17 16:34:10,958 - DEBUG - stdout: I: Using Apktool 2.10.0 on 6cba23ca54a980143fc91888572f154050f936fb11e3077a509e19e2b87ebc5d_1750152850.apk with 8 thread(s).
+2025-06-17 16:34:11,009 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 16:34:11,069 - DEBUG - stdout: I: Baksmaling classes2.dex...
+2025-06-17 16:34:11,093 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 16:34:11,592 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 16:34:11,627 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 16:34:19,817 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 16:34:20,236 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 16:34:20,245 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 16:34:20,925 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 16:34:21,562 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 16:34:21,592 - DEBUG - stdout: I: Copying original files...
+2025-06-17 16:34:21,787 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 16:34:30,954 - INFO - Found 3 permissions
+2025-06-17 16:34:30,955 - DEBUG - Permissions sent to client: [{'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'com.card.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 16:36:45,373 - INFO - Scanned 5168 code files
+2025-06-17 16:36:49,074 - DEBUG - Obfuscation results sent to client
+2025-06-17 16:36:49,186 - INFO - Client disconnected
+2025-06-17 16:36:49,216 - INFO - Client connected
+2025-06-17 16:38:40,232 - INFO - Client disconnected
+2025-06-17 16:41:47,712 - INFO - Client connected
+2025-06-17 16:41:54,614 - INFO - Client disconnected
+2025-06-17 19:20:09,218 - INFO - Client connected
+2025-06-17 19:41:25,642 - INFO -  * Detected change in 'D:\\Kuliah PENS\\Kuliah Semester 7\\Proyek Akhir\\ApkAnalyzer\\services\\obfuscation_service.py', reloading
+2025-06-17 19:41:27,347 - INFO -  * Restarting with stat
+2025-06-17 19:41:35,254 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-17 19:41:35,328 - INFO - Loaded 1340 permission entries
+2025-06-17 19:41:35,330 - INFO - All services initialized successfully
+2025-06-17 19:41:35,343 - INFO - Web components initialized successfully
+2025-06-17 19:41:35,344 - INFO - APK Analyzer application initialized successfully
+2025-06-17 19:41:35,345 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-17 19:41:35,388 - WARNING -  * Debugger is active!
+2025-06-17 19:41:35,428 - INFO -  * Debugger PIN: 948-519-497
+2025-06-17 19:41:35,676 - INFO - Client connected
+2025-06-17 19:41:55,074 - INFO - Client disconnected
+2025-06-17 19:41:55,797 - INFO - Client connected
+2025-06-17 19:42:57,487 - INFO - File saved at uploads\ba43c41c76fae43f7063240a13d6c7b0dfbd69cab4ec83ff3d8e3afb19965daa_1750164177.apk
+2025-06-17 19:42:57,489 - DEBUG - Running command: ApkTool\apktool.bat d uploads/ba43c41c76fae43f7063240a13d6c7b0dfbd69cab4ec83ff3d8e3afb19965daa_1750164177.apk -o decompiled_output/ba43c41c76fae43f7063240a13d6c7b0dfbd69cab4ec83ff3d8e3afb19965daa_1750164177 -f
+2025-06-17 19:42:58,309 - DEBUG - stdout: I: Using Apktool 2.10.0 on ba43c41c76fae43f7063240a13d6c7b0dfbd69cab4ec83ff3d8e3afb19965daa_1750164177.apk with 8 thread(s).
+2025-06-17 19:43:00,761 - ERROR - AndroidManifest.xml not found at decompiled_output/ba43c41c76fae43f7063240a13d6c7b0dfbd69cab4ec83ff3d8e3afb19965daa_1750164177\AndroidManifest.xml
+2025-06-17 19:43:00,763 - INFO - Found 0 Java files for obfuscation analysis
+2025-06-17 19:43:00,764 - WARNING - No Java files found for obfuscation analysis
+2025-06-17 19:43:00,765 - WARNING - Could not extract APK info: [Errno 2] No such file or directory: 'decompiled_output/ba43c41c76fae43f7063240a13d6c7b0dfbd69cab4ec83ff3d8e3afb19965daa_1750164177\\AndroidManifest.xml'
+2025-06-17 19:43:00,768 - WARNING - Could not read manifest: [Errno 2] No such file or directory: 'decompiled_output/ba43c41c76fae43f7063240a13d6c7b0dfbd69cab4ec83ff3d8e3afb19965daa_1750164177\\AndroidManifest.xml'
+2025-06-17 19:43:24,293 - INFO - File saved at uploads\1d5989b81ced1063d87f0e6c42d2beb4a0db8540667bcc0b547e18106aec278a_1750164204.apk
+2025-06-17 19:43:24,295 - DEBUG - Running command: ApkTool\apktool.bat d uploads/1d5989b81ced1063d87f0e6c42d2beb4a0db8540667bcc0b547e18106aec278a_1750164204.apk -o decompiled_output/1d5989b81ced1063d87f0e6c42d2beb4a0db8540667bcc0b547e18106aec278a_1750164204 -f
+2025-06-17 19:43:26,351 - DEBUG - stdout: I: Using Apktool 2.10.0 on 1d5989b81ced1063d87f0e6c42d2beb4a0db8540667bcc0b547e18106aec278a_1750164204.apk with 8 thread(s).
+2025-06-17 19:43:26,750 - ERROR - AndroidManifest.xml not found at decompiled_output/1d5989b81ced1063d87f0e6c42d2beb4a0db8540667bcc0b547e18106aec278a_1750164204\AndroidManifest.xml
+2025-06-17 19:43:26,751 - INFO - Found 0 Java files for obfuscation analysis
+2025-06-17 19:43:26,752 - WARNING - No Java files found for obfuscation analysis
+2025-06-17 19:43:26,753 - WARNING - Could not extract APK info: [Errno 2] No such file or directory: 'decompiled_output/1d5989b81ced1063d87f0e6c42d2beb4a0db8540667bcc0b547e18106aec278a_1750164204\\AndroidManifest.xml'
+2025-06-17 19:43:26,755 - WARNING - Could not read manifest: [Errno 2] No such file or directory: 'decompiled_output/1d5989b81ced1063d87f0e6c42d2beb4a0db8540667bcc0b547e18106aec278a_1750164204\\AndroidManifest.xml'
+2025-06-17 19:43:38,659 - INFO - File saved at uploads\4f775c2285cdeb518ccf186c3df81f5c7bfff39328f861349ea48c62e68423fd_1750164218.apk
+2025-06-17 19:43:38,661 - DEBUG - Running command: ApkTool\apktool.bat d uploads/4f775c2285cdeb518ccf186c3df81f5c7bfff39328f861349ea48c62e68423fd_1750164218.apk -o decompiled_output/4f775c2285cdeb518ccf186c3df81f5c7bfff39328f861349ea48c62e68423fd_1750164218 -f
+2025-06-17 19:43:39,077 - DEBUG - stdout: I: Using Apktool 2.10.0 on 4f775c2285cdeb518ccf186c3df81f5c7bfff39328f861349ea48c62e68423fd_1750164218.apk with 8 thread(s).
+2025-06-17 19:43:39,145 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 19:43:39,161 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 19:43:39,704 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 19:43:39,979 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 19:43:50,780 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 19:43:51,829 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 19:43:51,856 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 19:43:52,460 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 19:43:52,549 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 19:43:52,587 - DEBUG - stdout: I: Copying original files...
+2025-06-17 19:43:52,848 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 19:43:53,009 - INFO - Found 12 permissions
+2025-06-17 19:43:53,010 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.loysuajmoy.tapszmoimgbjyndwsekzhyaqgfkcvfaibbdcgiw.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 19:43:53,104 - INFO - Found 0 Java files for obfuscation analysis
+2025-06-17 19:43:53,105 - WARNING - No Java files found for obfuscation analysis
+2025-06-17 19:44:55,680 - INFO - File saved at uploads\0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750164295.apk
+2025-06-17 19:44:55,682 - DEBUG - Running command: ApkTool\apktool.bat d uploads/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750164295.apk -o decompiled_output/0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750164295 -f
+2025-06-17 19:44:56,259 - DEBUG - stdout: I: Using Apktool 2.10.0 on 0ab437ecb8d06fc26d7cec14b821aa30134141d1524e2a98f3f2022097e2c44b_1750164295.apk with 8 thread(s).
+2025-06-17 19:44:56,354 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 19:44:56,377 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 19:44:57,426 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 19:44:57,503 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 19:45:07,380 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 19:45:08,170 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 19:45:08,189 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 19:45:09,079 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 19:45:09,192 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 19:45:09,237 - DEBUG - stdout: I: Copying original files...
+2025-06-17 19:45:09,537 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 19:45:10,663 - INFO - Found 12 permissions
+2025-06-17 19:45:10,665 - DEBUG - Permissions sent to client: [{'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.RECEIVE_SMS', 'protection_level': 'dangerous', 'description': 'Allows an application to receive SMS messages.'}, {'name': 'android.permission.CALL_PHONE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memulai panggilan telepon tanpa konfirmasi dari antarmuka pengguna Dialer.'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.FOREGROUND_SERVICE_SPECIAL_USE', 'protection_level': 'normal|appop|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "specialUse"; dibatasi pada kasus penggunaan tertentu.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'com.wtwqpfrbbr.cwucpskrqepyamfviimjzttgupybvostnomtikl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 19:45:10,734 - INFO - Found 0 Java files for obfuscation analysis
+2025-06-17 19:45:10,735 - WARNING - No Java files found for obfuscation analysis
+2025-06-17 19:51:23,963 - INFO -  * Detected change in 'D:\\Kuliah PENS\\Kuliah Semester 7\\Proyek Akhir\\ApkAnalyzer\\services\\obfuscation_service.py', reloading
+2025-06-17 19:51:24,744 - INFO -  * Restarting with stat
+2025-06-17 19:51:36,632 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-17 19:51:36,734 - INFO - Loaded 1340 permission entries
+2025-06-17 19:51:36,735 - INFO - All services initialized successfully
+2025-06-17 19:51:36,743 - INFO - Web components initialized successfully
+2025-06-17 19:51:36,744 - INFO - APK Analyzer application initialized successfully
+2025-06-17 19:51:36,746 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-17 19:51:36,867 - WARNING -  * Debugger is active!
+2025-06-17 19:51:36,881 - INFO -  * Debugger PIN: 948-519-497
+2025-06-17 19:51:37,392 - INFO - Client connected
+2025-06-17 19:51:54,123 - INFO - File saved at uploads\Prova di pagamento._1750164714.apk
+2025-06-17 19:51:54,125 - DEBUG - Running command: ApkTool\apktool.bat d uploads/Prova di pagamento._1750164714.apk -o decompiled_output/Prova di pagamento -f
+2025-06-17 19:51:54,602 - DEBUG - stdout: I: Using Apktool 2.10.0 on Prova di pagamento._1750164714.apk with 8 thread(s).
+2025-06-17 19:51:55,216 - ERROR - AndroidManifest.xml not found at decompiled_output/Prova di pagamento\AndroidManifest.xml
+2025-06-17 19:51:55,328 - INFO - Found 0 Smali files for analysis
+2025-06-17 19:51:55,330 - WARNING - No Smali files found for analysis
+2025-06-17 19:51:55,331 - ERROR - Error during obfuscation analysis: 'int' object has no attribute 'get'
+Traceback (most recent call last):
+  File "D:\Kuliah PENS\Kuliah Semester 7\Proyek Akhir\ApkAnalyzer\services\obfuscation_service.py", line 87, in analyze_obfuscation
+    all_indicators[indicator_type] = data.get('count', 0)
+                                     ^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+2025-06-17 19:51:55,337 - WARNING - Could not extract APK info: [Errno 2] No such file or directory: 'decompiled_output/Prova di pagamento\\AndroidManifest.xml'
+2025-06-17 19:51:55,340 - WARNING - Could not read manifest: [Errno 2] No such file or directory: 'decompiled_output/Prova di pagamento\\AndroidManifest.xml'
+2025-06-17 19:51:55,341 - INFO - Obfuscation analysis complete: 0% confidence, 0 code snippets found
+2025-06-17 19:54:09,316 - INFO - File saved at uploads\Prova di pagamento._1750164849.apk
+2025-06-17 19:54:09,319 - DEBUG - Running command: ApkTool\apktool.bat d uploads/Prova di pagamento._1750164849.apk -o decompiled_output/Prova di pagamento -f
+2025-06-17 19:54:09,739 - DEBUG - stdout: I: Using Apktool 2.10.0 on Prova di pagamento._1750164849.apk with 8 thread(s).
+2025-06-17 19:54:09,964 - ERROR - AndroidManifest.xml not found at decompiled_output/Prova di pagamento\AndroidManifest.xml
+2025-06-17 19:54:10,046 - INFO - Found 0 Smali files for analysis
+2025-06-17 19:54:10,047 - WARNING - No Smali files found for analysis
+2025-06-17 19:54:10,048 - ERROR - Error during obfuscation analysis: 'int' object has no attribute 'get'
+Traceback (most recent call last):
+  File "D:\Kuliah PENS\Kuliah Semester 7\Proyek Akhir\ApkAnalyzer\services\obfuscation_service.py", line 87, in analyze_obfuscation
+    all_indicators[indicator_type] = data.get('count', 0)
+                                     ^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+2025-06-17 19:54:10,053 - WARNING - Could not extract APK info: [Errno 2] No such file or directory: 'decompiled_output/Prova di pagamento\\AndroidManifest.xml'
+2025-06-17 19:54:10,056 - WARNING - Could not read manifest: [Errno 2] No such file or directory: 'decompiled_output/Prova di pagamento\\AndroidManifest.xml'
+2025-06-17 19:54:10,058 - INFO - Obfuscation analysis complete: 0% confidence, 0 code snippets found
+2025-06-17 19:59:42,483 - INFO -  * Detected change in 'D:\\Kuliah PENS\\Kuliah Semester 7\\Proyek Akhir\\ApkAnalyzer\\services\\malware_service.py', reloading
+2025-06-17 19:59:42,988 - INFO -  * Restarting with stat
+2025-06-17 19:59:47,775 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-17 19:59:47,810 - INFO - Loaded 1340 permission entries
+2025-06-17 19:59:47,811 - INFO - All services initialized successfully
+2025-06-17 19:59:47,821 - INFO - Web components initialized successfully
+2025-06-17 19:59:47,822 - INFO - APK Analyzer application initialized successfully
+2025-06-17 19:59:47,823 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-17 19:59:47,845 - WARNING -  * Debugger is active!
+2025-06-17 19:59:47,859 - INFO -  * Debugger PIN: 948-519-497
+2025-06-17 19:59:49,798 - INFO - Client connected
+2025-06-17 20:00:04,570 - INFO -  * Detected change in 'D:\\Kuliah PENS\\Kuliah Semester 7\\Proyek Akhir\\ApkAnalyzer\\web\\routes.py', reloading
+2025-06-17 20:00:06,232 - INFO -  * Restarting with stat
+2025-06-17 20:00:10,950 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-17 20:00:10,996 - INFO - Loaded 1340 permission entries
+2025-06-17 20:00:10,997 - INFO - All services initialized successfully
+2025-06-17 20:00:11,079 - ERROR - Failed to initialize web components: No module named 'requests'
+2025-06-17 20:00:11,080 - ERROR - Application failed to start: No module named 'requests'
+2025-06-17 20:05:54,592 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-17 20:05:54,638 - INFO - Loaded 1340 permission entries
+2025-06-17 20:05:54,639 - INFO - All services initialized successfully
+2025-06-17 20:05:54,650 - INFO - Web components initialized successfully
+2025-06-17 20:05:54,651 - INFO - APK Analyzer application initialized successfully
+2025-06-17 20:05:54,652 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-17 20:05:54,677 - INFO -  * Restarting with stat
+2025-06-17 20:05:59,630 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-17 20:05:59,730 - INFO - Loaded 1340 permission entries
+2025-06-17 20:05:59,734 - INFO - All services initialized successfully
+2025-06-17 20:05:59,746 - INFO - Web components initialized successfully
+2025-06-17 20:05:59,748 - INFO - APK Analyzer application initialized successfully
+2025-06-17 20:05:59,749 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-17 20:05:59,775 - WARNING -  * Debugger is active!
+2025-06-17 20:05:59,820 - INFO -  * Debugger PIN: 948-519-497
+2025-06-17 20:07:30,366 - INFO - Client connected
+2025-06-17 20:07:41,343 - INFO - File saved at uploads\app (2)_1750165661.apk
+2025-06-17 20:07:41,345 - DEBUG - Running command: ApkTool\apktool.bat d uploads/app (2)_1750165661.apk -o decompiled_output/app (2)_1750165661 -f
+2025-06-17 20:07:41,894 - DEBUG - stdout: I: Using Apktool 2.10.0 on app (2)_1750165661.apk with 8 thread(s).
+2025-06-17 20:07:41,985 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 20:07:42,014 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 20:07:42,400 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 20:07:42,474 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 20:07:50,459 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 20:07:51,017 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 20:07:51,028 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 20:07:51,764 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 20:07:53,749 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 20:07:53,789 - DEBUG - stdout: I: Copying original files...
+2025-06-17 20:07:53,931 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 20:08:00,186 - INFO - Found 10 permissions
+2025-06-17 20:08:00,187 - DEBUG - Permissions sent to client: [{'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.READ_EXTERNAL_STORAGE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk membaca dari penyimpanan eksternal; izin ini tidak efektif di API level 33 dan lebih tinggi dan aplikasi harus meminta izin terkait media untuk mengakses file media.'}, {'name': 'android.permission.WRITE_EXTERNAL_STORAGE', 'protection_level': 'dangerous', 'description': 'Allows an application to write to external storage.'}, {'name': 'android.permission.READ_MEDIA_IMAGES', 'protection_level': 'dangerous', 'description': 'Allows an application to read image files from external storage.'}, {'name': 'android.permission.CAMERA', 'protection_level': 'dangerous', 'description': 'Diperlukan untuk dapat mengakses perangkat kamera.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'android.permission.ACCESS_WIFI_STATE', 'protection_level': 'normal', 'description': 'Akses informasi jaringan Wi-Fi.'}, {'name': 'android.permission.REQUEST_INSTALL_PACKAGES', 'protection_level': 'signature', 'description': 'Allows an application to request installing packages.'}, {'name': 'com.genius.myapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 20:08:00,416 - INFO - Found 8898 Smali files for analysis
+2025-06-17 20:08:05,558 - ERROR - Error during obfuscation analysis: 'int' object has no attribute 'get'
+Traceback (most recent call last):
+  File "D:\Kuliah PENS\Kuliah Semester 7\Proyek Akhir\ApkAnalyzer\services\obfuscation_service.py", line 87, in analyze_obfuscation
+    all_indicators[indicator_type] = data.get('count', 0)
+                                     ^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+2025-06-17 20:08:05,656 - INFO - Obfuscation analysis complete: 0% confidence, 0 code snippets found
+2025-06-17 20:15:51,108 - INFO -  * Detected change in 'D:\\Kuliah PENS\\Kuliah Semester 7\\Proyek Akhir\\ApkAnalyzer\\services\\obfuscation_service.py', reloading
+2025-06-17 20:15:51,680 - INFO -  * Restarting with stat
+2025-06-17 20:15:55,712 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-17 20:15:55,754 - INFO - Loaded 1340 permission entries
+2025-06-17 20:15:55,755 - INFO - All services initialized successfully
+2025-06-17 20:15:55,761 - INFO - Web components initialized successfully
+2025-06-17 20:15:55,762 - INFO - APK Analyzer application initialized successfully
+2025-06-17 20:15:55,763 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-17 20:15:55,787 - WARNING -  * Debugger is active!
+2025-06-17 20:15:55,805 - INFO -  * Debugger PIN: 948-519-497
+2025-06-17 20:15:58,548 - INFO - Client connected
+2025-06-17 20:16:17,123 - INFO - Client disconnected
+2025-06-17 20:16:17,686 - INFO - Client connected
+2025-06-17 20:16:28,811 - INFO - File saved at uploads\app (2)_1750166188.apk
+2025-06-17 20:16:28,813 - DEBUG - Running command: ApkTool\apktool.bat d uploads/app (2)_1750166188.apk -o decompiled_output/app (2)_1750166188 -f
+2025-06-17 20:16:29,409 - DEBUG - stdout: I: Using Apktool 2.10.0 on app (2)_1750166188.apk with 8 thread(s).
+2025-06-17 20:16:29,509 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-17 20:16:29,546 - DEBUG - stdout: I: Loading resource table...
+2025-06-17 20:16:29,953 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-17 20:16:30,054 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-17 20:16:38,014 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-17 20:16:38,464 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-17 20:16:38,480 - DEBUG - stdout: I: Regular manifest package...
+2025-06-17 20:16:39,137 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-17 20:16:41,068 - DEBUG - stdout: I: Copying unknown files...
+2025-06-17 20:16:41,109 - DEBUG - stdout: I: Copying original files...
+2025-06-17 20:16:41,307 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-17 20:16:48,181 - INFO - Found 10 permissions
+2025-06-17 20:16:48,183 - DEBUG - Permissions sent to client: [{'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.READ_EXTERNAL_STORAGE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk membaca dari penyimpanan eksternal; izin ini tidak efektif di API level 33 dan lebih tinggi dan aplikasi harus meminta izin terkait media untuk mengakses file media.'}, {'name': 'android.permission.WRITE_EXTERNAL_STORAGE', 'protection_level': 'dangerous', 'description': 'Allows an application to write to external storage.'}, {'name': 'android.permission.READ_MEDIA_IMAGES', 'protection_level': 'dangerous', 'description': 'Allows an application to read image files from external storage.'}, {'name': 'android.permission.CAMERA', 'protection_level': 'dangerous', 'description': 'Diperlukan untuk dapat mengakses perangkat kamera.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'android.permission.ACCESS_WIFI_STATE', 'protection_level': 'normal', 'description': 'Akses informasi jaringan Wi-Fi.'}, {'name': 'android.permission.REQUEST_INSTALL_PACKAGES', 'protection_level': 'signature', 'description': 'Allows an application to request installing packages.'}, {'name': 'com.genius.myapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-17 20:16:48,425 - INFO - Found 8898 Smali files for obfuscation analysis
+2025-06-17 20:16:48,519 - INFO - Found 0 Java files for obfuscation analysis
+2025-06-17 20:16:48,520 - INFO - Found 8898 Smali files and 0 Java files
+2025-06-17 20:16:50,001 - INFO - Obfuscation analysis complete: 70% confidence, 591 snippets found
+2025-06-17 20:16:50,113 - INFO - Obfuscation analysis complete: 70% confidence, 591 code snippets found
+2025-06-18 00:46:42,383 - INFO - Client disconnected
+2025-06-18 06:20:38,280 - INFO - Client connected
+2025-06-18 06:38:17,887 - INFO - Client disconnected
+2025-06-18 08:32:24,855 - INFO - Client connected
+2025-06-18 08:33:40,933 - INFO -  * Detected change in 'D:\\Kuliah PENS\\Kuliah Semester 7\\Proyek Akhir\\ApkAnalyzer\\services\\obfuscation_service.py', reloading
+2025-06-18 08:33:41,767 - INFO -  * Restarting with stat
+2025-06-18 08:33:48,572 - DEBUG - Sample permissions from Excel: [{'permissions': 'ACCEPT_HANDOVER', 'protection_level': 'dangerous', 'description': 'Melanjutkan panggilan dari aplikasi lain.'}, {'permissions': 'ACCESS_BACKGROUND_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi di latar belakang.'}, {'permissions': 'ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'permissions': 'ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'permissions': 'ACCESS_MEDIA_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi geografis dari media pengguna.'}]
+2025-06-18 08:33:48,595 - INFO - Loaded 1340 permission entries
+2025-06-18 08:33:48,596 - INFO - All services initialized successfully
+2025-06-18 08:33:48,603 - INFO - Web components initialized successfully
+2025-06-18 08:33:48,603 - INFO - APK Analyzer application initialized successfully
+2025-06-18 08:33:48,604 - INFO - Starting APK Analyzer on 127.0.0.1:5000 (debug=True)
+2025-06-18 08:33:48,671 - WARNING -  * Debugger is active!
+2025-06-18 08:33:48,689 - INFO -  * Debugger PIN: 948-519-497
+2025-06-18 08:33:48,880 - INFO - Client connected
+2025-06-18 08:40:34,325 - INFO - Client disconnected
+2025-06-18 08:40:34,938 - INFO - Client connected
+2025-06-18 08:40:49,150 - INFO - File saved at uploads\Chiletur Copec_2.7.6_APKPure_1750210849.apk
+2025-06-18 08:40:49,151 - DEBUG - Running command: ApkTool\apktool.bat d uploads/Chiletur Copec_2.7.6_APKPure_1750210849.apk -o decompiled_output/Chiletur Copec_2 -f
+2025-06-18 08:40:50,497 - DEBUG - stdout: I: Using Apktool 2.10.0 on Chiletur Copec_2.7.6_APKPure_1750210849.apk with 8 thread(s).
+2025-06-18 08:40:50,534 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-18 08:40:50,549 - DEBUG - stdout: I: Loading resource table...
+2025-06-18 08:40:50,839 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-18 08:40:50,967 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-18 08:40:55,833 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-18 08:40:56,237 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-18 08:40:56,249 - DEBUG - stdout: I: Regular manifest package...
+2025-06-18 08:40:56,710 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-18 08:40:59,356 - DEBUG - stdout: I: Copying unknown files...
+2025-06-18 08:40:59,434 - DEBUG - stdout: I: Copying original files...
+2025-06-18 08:41:09,049 - INFO - Found 10 permissions
+2025-06-18 08:41:09,050 - DEBUG - Permissions sent to client: [{'name': 'android.permission.WRITE_EXTERNAL_STORAGE', 'protection_level': 'dangerous', 'description': 'Allows an application to write to external storage.'}, {'name': 'android.permission.GET_ACCOUNTS', 'protection_level': 'dangerous', 'description': 'Mengizinkan akses ke daftar akun pada Layanan Akun; mulai Android 6.0 hanya diperlukan jika aplikasi tidak berbagi signature dengan authenticator.'}, {'name': 'android.permission.USE_CREDENTIALS', 'protection_level': 'unknown', 'description': 'No description available'}, {'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'android.permission.ACCESS_COARSE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi kasar (approximate).'}, {'name': 'android.permission.ACCESS_FINE_LOCATION', 'protection_level': 'dangerous', 'description': 'Akses lokasi akurat (precise).'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE', 'protection_level': 'unknown', 'description': 'No description available'}, {'name': 'com.google.android.c2dm.permission.RECEIVE', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-18 08:41:09,221 - INFO - Found 13078 Smali files for obfuscation analysis
+2025-06-18 08:41:09,294 - INFO - Found 0 Java files for obfuscation analysis
+2025-06-18 08:41:09,295 - INFO - Found 13078 Smali files and 0 Java files
+2025-06-18 08:43:04,569 - INFO - Obfuscation analysis complete: 100% confidence, 48196 snippets found
+2025-06-18 08:43:04,839 - INFO - Obfuscation analysis complete: 100% confidence, 48196 code snippets found
+2025-06-18 08:43:06,851 - INFO - Client disconnected
+2025-06-18 08:43:07,325 - INFO - Client connected
+2025-06-18 08:53:02,441 - INFO - File saved at uploads\5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211582.apk
+2025-06-18 08:53:02,442 - DEBUG - Running command: ApkTool\apktool.bat d uploads/5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211582.apk -o decompiled_output/5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211582 -f
+2025-06-18 08:53:02,836 - DEBUG - stdout: I: Using Apktool 2.10.0 on 5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211582.apk with 8 thread(s).
+2025-06-18 08:53:03,815 - ERROR - AndroidManifest.xml not found at decompiled_output/5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211582\AndroidManifest.xml
+2025-06-18 08:53:03,816 - INFO - Found 0 Smali files for obfuscation analysis
+2025-06-18 08:53:03,817 - INFO - Found 0 Java files for obfuscation analysis
+2025-06-18 08:53:03,818 - WARNING - No Smali or Java files found for obfuscation analysis
+2025-06-18 08:53:03,819 - WARNING - Could not extract APK info: [Errno 2] No such file or directory: 'decompiled_output/5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211582\\AndroidManifest.xml'
+2025-06-18 08:53:03,820 - WARNING - Could not read manifest: [Errno 2] No such file or directory: 'decompiled_output/5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211582\\AndroidManifest.xml'
+2025-06-18 08:53:03,822 - INFO - Obfuscation analysis complete: 0% confidence, 0 code snippets found
+2025-06-18 08:53:29,186 - INFO - File saved at uploads\5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211609.apk
+2025-06-18 08:53:29,188 - DEBUG - Running command: ApkTool\apktool.bat d uploads/5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211609.apk -o decompiled_output/5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211609 -f
+2025-06-18 08:53:29,504 - DEBUG - stdout: I: Using Apktool 2.10.0 on 5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211609.apk with 8 thread(s).
+2025-06-18 08:53:29,769 - ERROR - AndroidManifest.xml not found at decompiled_output/5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211609\AndroidManifest.xml
+2025-06-18 08:53:29,771 - INFO - Found 0 Smali files for obfuscation analysis
+2025-06-18 08:53:29,772 - INFO - Found 0 Java files for obfuscation analysis
+2025-06-18 08:53:29,772 - WARNING - No Smali or Java files found for obfuscation analysis
+2025-06-18 08:53:29,773 - WARNING - Could not extract APK info: [Errno 2] No such file or directory: 'decompiled_output/5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211609\\AndroidManifest.xml'
+2025-06-18 08:53:29,774 - WARNING - Could not read manifest: [Errno 2] No such file or directory: 'decompiled_output/5bea5c0aa238dae9b1555a0792c7a9260679692ee53ad5dc7436ed636f7343e6_1750211609\\AndroidManifest.xml'
+2025-06-18 08:53:29,775 - INFO - Obfuscation analysis complete: 0% confidence, 0 code snippets found
+2025-06-18 09:27:33,619 - INFO - Client disconnected
+2025-06-18 09:39:51,767 - INFO - Client connected
+2025-06-18 10:27:44,391 - INFO - Client disconnected
+2025-06-18 10:53:56,072 - INFO - Client connected
+2025-06-18 11:05:01,588 - INFO - Client disconnected
+2025-06-18 11:11:09,358 - INFO - Client connected
+2025-06-18 11:11:09,702 - INFO - Client disconnected
+2025-06-18 11:11:10,261 - INFO - Client connected
+2025-06-18 11:11:11,145 - INFO - Client disconnected
+2025-06-18 11:11:11,215 - INFO - Client connected
+2025-06-18 11:11:17,992 - INFO - File saved at uploads\b399dc1f2338beb4f75265ad2d5d2e2f5dd738541b7cce57fe5099851483ad73_1750219877.apk
+2025-06-18 11:11:17,996 - DEBUG - Running command: ApkTool\apktool.bat d uploads/b399dc1f2338beb4f75265ad2d5d2e2f5dd738541b7cce57fe5099851483ad73_1750219877.apk -o decompiled_output/b399dc1f2338beb4f75265ad2d5d2e2f5dd738541b7cce57fe5099851483ad73_1750219877 -f
+2025-06-18 11:11:18,463 - DEBUG - stdout: I: Using Apktool 2.10.0 on b399dc1f2338beb4f75265ad2d5d2e2f5dd738541b7cce57fe5099851483ad73_1750219877.apk with 8 thread(s).
+2025-06-18 11:11:18,548 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-18 11:11:18,565 - DEBUG - stdout: I: Loading resource table...
+2025-06-18 11:11:18,980 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-18 11:11:19,032 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-18 11:11:25,731 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-18 11:11:26,893 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-18 11:11:26,924 - DEBUG - stdout: I: Regular manifest package...
+2025-06-18 11:11:27,408 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-18 11:11:27,640 - DEBUG - stdout: I: Copying unknown files...
+2025-06-18 11:11:27,771 - DEBUG - stdout: I: Copying original files...
+2025-06-18 11:11:27,948 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-18 11:11:39,414 - INFO - Found 22 permissions
+2025-06-18 11:11:39,420 - DEBUG - Permissions sent to client: [{'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.ACCESS_WIFI_STATE', 'protection_level': 'normal', 'description': 'Akses informasi jaringan Wi-Fi.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'android.permission.POST_NOTIFICATIONS', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memposting pemberitahuan.'}, {'name': 'android.permission.REQUEST_INSTALL_PACKAGES', 'protection_level': 'signature', 'description': 'Allows an application to request installing packages.'}, {'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.REQUEST_DELETE_PACKAGES', 'protection_level': 'normal', 'description': 'Allows an application to request deleting packages.'}, {'name': 'android.permission.MANAGE_EXTERNAL_STORAGE', 'protection_level': 'signature|appop|preinstalled', 'description': 'Mengizinkan aplikasi akses luas ke penyimpanan eksternal dalam penyimpanan terbatasi; digunakan oleh aplikasi yang mengelola file untuk pengguna.'}, {'name': 'android.permission.READ_EXTERNAL_STORAGE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk membaca dari penyimpanan eksternal; izin ini tidak efektif di API level 33 dan lebih tinggi dan aplikasi harus meminta izin terkait media untuk mengakses file media.'}, {'name': 'android.permission.WRITE_EXTERNAL_STORAGE', 'protection_level': 'dangerous', 'description': 'Allows an application to write to external storage.'}, {'name': 'android.permission.READ_MEDIA_IMAGES', 'protection_level': 'dangerous', 'description': 'Allows an application to read image files from external storage.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.FOREGROUND_SERVICE_DATA_SYNC', 'protection_level': 'normal|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "dataSync".'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.SYSTEM_ALERT_WINDOW', 'protection_level': 'signature|setup|appop|installer|pre23|development', 'description': 'Allows an app to create windows using the type WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY shown on top of all other apps.'}, {'name': 'android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS', 'protection_level': 'normal', 'description': 'Permission an application must hold in order to use Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'com.google.android.c2dm.permission.RECEIVE', 'protection_level': 'unknown', 'description': 'No description available'}, {'name': 'com.t4w.ostora516.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-18 11:11:39,627 - INFO - Found 17102 Smali files for obfuscation analysis
+2025-06-18 11:11:39,678 - INFO - Found 0 Java files for obfuscation analysis
+2025-06-18 11:11:39,679 - INFO - Found 17102 Smali files and 0 Java files
+2025-06-18 11:14:12,368 - INFO - Obfuscation analysis complete: 99% confidence, 49044 snippets found
+2025-06-18 11:14:12,978 - INFO - Obfuscation analysis complete: 99% confidence, 49044 code snippets found
+2025-06-18 11:14:14,910 - INFO - Client disconnected
+2025-06-18 11:14:14,981 - INFO - Client connected
+2025-06-18 11:29:11,133 - INFO - Client disconnected
+2025-06-18 11:29:11,814 - INFO - Client connected
+2025-06-18 11:29:20,186 - INFO - File saved at uploads\b399dc1f2338beb4f75265ad2d5d2e2f5dd738541b7cce57fe5099851483ad73_1750220960.apk
+2025-06-18 11:29:20,187 - DEBUG - Running command: ApkTool\apktool.bat d uploads/b399dc1f2338beb4f75265ad2d5d2e2f5dd738541b7cce57fe5099851483ad73_1750220960.apk -o decompiled_output/b399dc1f2338beb4f75265ad2d5d2e2f5dd738541b7cce57fe5099851483ad73_1750220960 -f
+2025-06-18 11:29:20,745 - DEBUG - stdout: I: Using Apktool 2.10.0 on b399dc1f2338beb4f75265ad2d5d2e2f5dd738541b7cce57fe5099851483ad73_1750220960.apk with 8 thread(s).
+2025-06-18 11:29:20,801 - DEBUG - stdout: I: Baksmaling classes.dex...
+2025-06-18 11:29:20,815 - DEBUG - stdout: I: Loading resource table...
+2025-06-18 11:29:21,209 - DEBUG - stdout: I: Decoding file-resources...
+2025-06-18 11:29:21,276 - DEBUG - stdout: I: Loading resource table from file: C:\Users\USER\AppData\Local\apktool\framework\1.apk
+2025-06-18 11:29:27,155 - DEBUG - stdout: I: Decoding values */* XMLs...
+2025-06-18 11:29:27,754 - DEBUG - stdout: I: Decoding AndroidManifest.xml with resources...
+2025-06-18 11:29:27,764 - DEBUG - stdout: I: Regular manifest package...
+2025-06-18 11:29:28,237 - DEBUG - stdout: I: Copying assets and libs...
+2025-06-18 11:29:28,475 - DEBUG - stdout: I: Copying unknown files...
+2025-06-18 11:29:28,615 - DEBUG - stdout: I: Copying original files...
+2025-06-18 11:29:28,821 - DEBUG - stdout: I: Copying META-INF/services directory
+2025-06-18 11:29:39,769 - INFO - Found 22 permissions
+2025-06-18 11:29:39,772 - DEBUG - Permissions sent to client: [{'name': 'android.permission.INTERNET', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi membuka koneksi jaringan.'}, {'name': 'android.permission.ACCESS_WIFI_STATE', 'protection_level': 'normal', 'description': 'Akses informasi jaringan Wi-Fi.'}, {'name': 'android.permission.ACCESS_NETWORK_STATE', 'protection_level': 'normal', 'description': 'Akses informasi tentang jaringan.'}, {'name': 'android.permission.POST_NOTIFICATIONS', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk memposting pemberitahuan.'}, {'name': 'android.permission.REQUEST_INSTALL_PACKAGES', 'protection_level': 'signature', 'description': 'Allows an application to request installing packages.'}, {'name': 'android.permission.READ_PHONE_STATE', 'protection_level': 'dangerous', 'description': 'Allows read only access to phone state including the current cellular network information the status of any ongoing calls and a list of any PhoneAccounts registered on the device.'}, {'name': 'android.permission.QUERY_ALL_PACKAGES', 'protection_level': 'normal', 'description': 'Mengizinkan query untuk semua aplikasi normal di perangkat terlepas dari deklarasi manifest.'}, {'name': 'android.permission.REQUEST_DELETE_PACKAGES', 'protection_level': 'normal', 'description': 'Allows an application to request deleting packages.'}, {'name': 'android.permission.MANAGE_EXTERNAL_STORAGE', 'protection_level': 'signature|appop|preinstalled', 'description': 'Mengizinkan aplikasi akses luas ke penyimpanan eksternal dalam penyimpanan terbatasi; digunakan oleh aplikasi yang mengelola file untuk pengguna.'}, {'name': 'android.permission.READ_EXTERNAL_STORAGE', 'protection_level': 'dangerous', 'description': 'Mengizinkan aplikasi untuk membaca dari penyimpanan eksternal; izin ini tidak efektif di API level 33 dan lebih tinggi dan aplikasi harus meminta izin terkait media untuk mengakses file media.'}, {'name': 'android.permission.WRITE_EXTERNAL_STORAGE', 'protection_level': 'dangerous', 'description': 'Allows an application to write to external storage.'}, {'name': 'android.permission.READ_MEDIA_IMAGES', 'protection_level': 'dangerous', 'description': 'Allows an application to read image files from external storage.'}, {'name': 'android.permission.FOREGROUND_SERVICE', 'protection_level': 'normal', 'description': 'Mengizinkan aplikasi biasa menggunakan Service.startForeground.'}, {'name': 'android.permission.FOREGROUND_SERVICE_DATA_SYNC', 'protection_level': 'normal|instant', 'description': 'Mengizinkan penggunaan startForeground untuk tipe "dataSync".'}, {'name': 'android.permission.RECEIVE_BOOT_COMPLETED', 'protection_level': 'normal', 'description': 'Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting.'}, {'name': 'android.permission.SYSTEM_ALERT_WINDOW', 'protection_level': 'signature|setup|appop|installer|pre23|development', 'description': 'Allows an app to create windows using the type WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY shown on top of all other apps.'}, {'name': 'android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS', 'protection_level': 'normal', 'description': 'Permission an application must hold in order to use Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS.'}, {'name': 'android.permission.WAKE_LOCK', 'protection_level': 'normal', 'description': 'Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming.'}, {'name': 'com.google.android.c2dm.permission.RECEIVE', 'protection_level': 'unknown', 'description': 'No description available'}, {'name': 'com.t4w.ostora516.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION', 'protection_level': 'unknown', 'description': 'No description available'}]
+2025-06-18 11:29:39,977 - INFO - Found 17102 Smali files for obfuscation analysis
+2025-06-18 11:29:40,034 - INFO - Found 0 Java files for obfuscation analysis
+2025-06-18 11:29:40,035 - INFO - Found 17102 Smali files and 0 Java files
+2025-06-18 11:32:08,265 - INFO - Obfuscation analysis complete: 99% confidence, 49044 snippets found
+2025-06-18 11:32:08,350 - INFO - Obfuscation analysis complete: 99% confidence, 49044 code snippets found
+2025-06-18 11:32:10,158 - INFO - Client disconnected
+2025-06-18 11:32:10,243 - INFO - Client connected
+2025-06-18 11:55:36,086 - INFO - Client disconnected
+2025-06-18 13:23:30,759 - INFO - Client connected
+2025-06-18 13:37:51,844 - INFO - Client disconnected
