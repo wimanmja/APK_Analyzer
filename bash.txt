@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Buat folder output untuk APK valid
+mkdir -p ~/apk-fixed
+
+# Loop semua file xapk
+for file in *.xapk; do
+  echo "📦 Memproses: $file"
+
+  # Buat folder sementara dengan nama file (tanpa .xapk)
+  foldername="${file%.xapk}"
+  mkdir -p "$foldername"
+
+  # Ekstrak isi xapk ke folder tersebut
+  unzip -qq "$file" -d "$foldername"
+
+  # Cari file .apk di dalam hasil ekstrak
+  apkfile=$(find "$foldername" -name "*.apk" | head -n 1)
+
+  if [ -n "$apkfile" ]; then
+    echo "✅ Ditemukan: $apkfile"
+    cp "$apkfile" ~/apk-fixed/"$foldername.apk"
+  else
+    echo "⚠️ Tidak ditemukan file .apk dalam $file"
+  fi
+
+  # (opsional) hapus folder ekstrak
+  rm -rf "$foldername"
+done
+
+echo "🎉 Semua .xapk telah diproses. File .apk berada di ~/apk-fixed"
