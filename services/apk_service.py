@@ -1,249 +1,124 @@
 import os
 import subprocess
-import shutil
-import zipfile
-from pathlib import Path
-import tempfile
 import logging
-from config import Config
+import time # [ADDED] Import the time module
 
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+class ApkService:
+    """Service for APK decompilation and analysis"""
 
-class APKService:
-    def __init__(self):
-        # Use Config class attributes
-        self.decompiled_folder = Config.OUTPUT_FOLDER
-        self.apktool_jar = Config.APKTOOL_JAR
-        self.jadx_executable = Config.JADX_EXECUTABLE
-        
-        # Ensure decompiled output folder exists
-        os.makedirs(self.decompiled_folder, exist_ok=True)
-        logger.info(f"APKService initialized with decompiled folder: {self.decompiled_folder}")
-
-    def decompile_apk(self, apk_path, output_name=None):
+    def __init__(self, apktool_path, output_folder, socketio=None):
         """
-        Decompile APK using both APKTool and JADX
+        Initialize the APK service
+
+        Args:
+            apktool_path: Path to apktool executable
+            output_folder: Folder to store decompiled APKs
+            socketio: SocketIO instance for real-time updates (optional)
+        """
+        self.apktool_path = apktool_path
+        self.output_folder = output_folder
+        self.socketio = socketio
+
+    def decompile_apk(self, apk_path):
+        """
+        Decompile an APK file
+
+        Args:
+            apk_path: Path to the APK file
+
+        Returns:
+            tuple: (success, output_dir or error_message, apk_size_mb)
         """
         try:
-            if not os.path.exists(apk_path):
-                raise FileNotFoundError(f"APK file not found: {apk_path}")
-            
-            # Generate output folder name
-            if not output_name:
-                apk_name = Path(apk_path).stem
-                output_name = f"{apk_name}_decompiled"
-            
-            # Create specific output folder for this APK
-            apk_output_folder = os.path.join(self.decompiled_folder, output_name)
-            
-            # Remove existing folder if it exists
-            if os.path.exists(apk_output_folder):
-                shutil.rmtree(apk_output_folder)
-            
-            os.makedirs(apk_output_folder, exist_ok=True)
-            logger.info(f"Created output folder: {apk_output_folder}")
-            
-            # Decompile with APKTool (for resources and manifest)
-            apktool_output = os.path.join(apk_output_folder, "apktool_output")
-            self._decompile_with_apktool(apk_path, apktool_output)
-            
-            # Decompile with JADX (for Java source code)
-            jadx_output = os.path.join(apk_output_folder, "jadx_output")
-            self._decompile_with_jadx(apk_path, jadx_output)
-            
-            # Extract basic APK info
-            apk_info = self._extract_apk_info(apk_path, apktool_output)
-            
-            result = {
-                'success': True,
-                'output_folder': apk_output_folder,
-                'apktool_output': apktool_output,
-                'jadx_output': jadx_output,
-                'apk_info': apk_info,
-                'message': f'APK successfully decompiled to {apk_output_folder}'
-            }
-            
-            logger.info(f"Decompilation completed successfully: {result}")
-            return result
-            
+            # [ADDED] Get APK file size
+            apk_size_bytes = os.path.getsize(apk_path)
+            apk_size_mb = round(apk_size_bytes / (1024 * 1024), 2) # Convert to MB, round to 2 decimal places
+
+            # Normalize paths for cross-platform compatibility (Windows vs Linux)
+            apk_path = apk_path.replace("\\", "/")
+
+            # Create output directory based on APK name (without extension)
+            apk_name = os.path.basename(apk_path).split('.')[0]
+            output_dir = os.path.join(self.output_folder, apk_name)
+            output_dir = output_dir.replace("\\", "/")
+            # Create the directory if it doesn't exist, exist_ok=True prevents error if it already exists
+            os.makedirs(output_dir, exist_ok=True)
+
+            # Build the Apktool command. Assumes 'java' executable is in system PATH
+            # and self.apktool_path points to the apktool.jar file.
+            command = [
+                'java',              # Command to invoke Java Virtual Machine
+                '-jar',              # Flag to execute a JAR file
+                self.apktool_path,   # Full path to the apktool.jar file
+                "d",                 # Apktool command: 'd' for decode (decompile)
+                apk_path,            # Path to the input APK file
+                "-o",                # Output directory flag
+                output_dir,          # The directory where decompiled files will be stored
+                "-f"                 # Force overwrite if output directory already exists
+            ]
+            logging.debug(f"Running command: {' '.join(command)}")
+
+            # Emit a status message to the frontend via SocketIO
+            self._emit_status(f"Decompiling APK: {apk_name}")
+
+            # Run the command as a subprocess
+            # stdout=subprocess.PIPE and stderr=subprocess.PIPE capture output/errors
+            # text=True decodes output as text (UTF-8 by default)
+            process = subprocess.Popen(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+
+            # Process output from Apktool in real-time
+            # This loop reads line by line and sends progress/status to the frontend
+            while True:
+                output = process.stdout.readline()
+                if output == "" and process.poll() is not None: # Check if process finished and no more output
+                    break
+                if output:
+                    logging.debug(f"stdout: {output.strip()}")
+                    self._emit_status(output.strip()) # Send each line of Apktool's output
+
+            # Wait for the subprocess to complete
+            process.wait()
+            # Read any remaining standard error output
+            stderr = process.stderr.read()
+            # Get the exit code of the subprocess
+            returncode = process.returncode
+            # Close the pipe connections
+            process.stdout.close()
+            process.stderr.close()
+
+            # Check if decompilation was successful (returncode 0 indicates success)
+            if returncode == 0:
+                self._emit_status("Decompilation successful")
+                # [MODIFIED] Return success status, output directory, and APK size
+                return True, output_dir, apk_size_mb
+            else:
+                error_msg = f"Decompilation failed: {stderr}"
+                logging.error(error_msg)
+                self._emit_status(f"Error: {stderr}")
+                # [MODIFIED] Return failure status, error message, and None for size
+                return False, error_msg, None
+
         except Exception as e:
+            # Catch any unexpected errors during the process
             error_msg = f"Error decompiling APK: {str(e)}"
-            logger.error(error_msg)
-            return {
-                'success': False,
-                'error': error_msg,
-                'output_folder': None
-            }
+            logging.exception(error_msg) # Log full traceback
+            self._emit_status(f"Error: {str(e)}")
+            # [MODIFIED] Return failure status, error message, and None for size
+            return False, error_msg, None
 
-    def _decompile_with_apktool(self, apk_path, output_folder):
+    def _emit_status(self, message):
         """
-        Decompile APK using APKTool
-        """
-        try:
-            logger.info(f"Starting APKTool decompilation: {apk_path} -> {output_folder}")
-            
-            # APKTool command
-            cmd = [
-                'java', '-jar', self.apktool_jar,
-                'd',  # decode
-                apk_path,
-                '-o', output_folder,
-                '-f'  # force overwrite
-            ]
-            
-            logger.info(f"APKTool command: {' '.join(cmd)}")
-            
-            # Run APKTool
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=300,  # 5 minutes timeout
-                cwd=os.path.dirname(self.apktool_jar)
-            )
-            
-            if result.returncode == 0:
-                logger.info("APKTool decompilation successful")
-                logger.info(f"APKTool stdout: {result.stdout}")
-            else:
-                logger.error(f"APKTool failed with return code {result.returncode}")
-                logger.error(f"APKTool stderr: {result.stderr}")
-                raise Exception(f"APKTool failed: {result.stderr}")
-                
-        except subprocess.TimeoutExpired:
-            raise Exception("APKTool decompilation timed out")
-        except Exception as e:
-            raise Exception(f"APKTool error: {str(e)}")
+        Emit status update via SocketIO if available
+        This sends a generic status message to the frontend.
 
-    def _decompile_with_jadx(self, apk_path, output_folder):
+        Args:
+            message: Status message to emit
         """
-        Decompile APK using JADX
-        """
-        try:
-            logger.info(f"Starting JADX decompilation: {apk_path} -> {output_folder}")
-            
-            # JADX command
-            cmd = [
-                self.jadx_executable,
-                '-d', output_folder,  # output directory
-                '--show-bad-code',    # show bad code
-                '--no-res',          # skip resources
-                apk_path
-            ]
-            
-            logger.info(f"JADX command: {' '.join(cmd)}")
-            
-            # Run JADX
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=600,  # 10 minutes timeout
-                cwd=os.path.dirname(self.jadx_executable)
-            )
-            
-            if result.returncode == 0:
-                logger.info("JADX decompilation successful")
-                logger.info(f"JADX stdout: {result.stdout}")
-            else:
-                logger.warning(f"JADX completed with warnings/errors: {result.stderr}")
-                # JADX often returns non-zero even on success, so we check if output exists
-                if os.path.exists(output_folder) and os.listdir(output_folder):
-                    logger.info("JADX output folder exists and contains files, considering successful")
-                else:
-                    raise Exception(f"JADX failed: {result.stderr}")
-                
-        except subprocess.TimeoutExpired:
-            raise Exception("JADX decompilation timed out")
-        except Exception as e:
-            raise Exception(f"JADX error: {str(e)}")
-
-    def _extract_apk_info(self, apk_path, apktool_output):
-        """
-        Extract basic APK information
-        """
-        try:
-            apk_info = {
-                'file_name': os.path.basename(apk_path),
-                'file_size': os.path.getsize(apk_path),
-                'package_name': 'Unknown',
-                'version_name': 'Unknown',
-                'version_code': 'Unknown',
-                'min_sdk': 'Unknown',
-                'target_sdk': 'Unknown'
-            }
-            
-            # Try to read AndroidManifest.xml from APKTool output
-            manifest_path = os.path.join(apktool_output, 'AndroidManifest.xml')
-            if os.path.exists(manifest_path):
-                # Parse manifest for basic info
-                with open(manifest_path, 'r', encoding='utf-8', errors='ignore') as f:
-                    manifest_content = f.read()
-                    
-                # Extract package name
-                if 'package=' in manifest_content:
-                    start = manifest_content.find('package="') + 9
-                    end = manifest_content.find('"', start)
-                    if start > 8 and end > start:
-                        apk_info['package_name'] = manifest_content[start:end]
-                
-                # Extract version info
-                if 'android:versionName=' in manifest_content:
-                    start = manifest_content.find('android:versionName="') + 21
-                    end = manifest_content.find('"', start)
-                    if start > 20 and end > start:
-                        apk_info['version_name'] = manifest_content[start:end]
-            
-            return apk_info
-            
-        except Exception as e:
-            logger.error(f"Error extracting APK info: {str(e)}")
-            return {
-                'file_name': os.path.basename(apk_path),
-                'file_size': os.path.getsize(apk_path),
-                'error': str(e)
-            }
-
-    def get_decompiled_files(self, output_folder):
-        """
-        Get list of decompiled files
-        """
-        try:
-            if not os.path.exists(output_folder):
-                return []
-            
-            files = []
-            for root, dirs, filenames in os.walk(output_folder):
-                for filename in filenames:
-                    file_path = os.path.join(root, filename)
-                    relative_path = os.path.relpath(file_path, output_folder)
-                    files.append(relative_path)
-            
-            return files
-            
-        except Exception as e:
-            logger.error(f"Error getting decompiled files: {str(e)}")
-            return []
-
-    def cleanup_old_files(self, max_age_hours=24):
-        """
-        Clean up old decompiled files
-        """
-        try:
-            import time
-            current_time = time.time()
-            max_age_seconds = max_age_hours * 3600
-            
-            for item in os.listdir(self.decompiled_folder):
-                item_path = os.path.join(self.decompiled_folder, item)
-                if os.path.isdir(item_path):
-                    # Check if folder is older than max_age
-                    folder_age = current_time - os.path.getctime(item_path)
-                    if folder_age > max_age_seconds:
-                        logger.info(f"Removing old decompiled folder: {item_path}")
-                        shutil.rmtree(item_path)
-                        
-        except Exception as e:
-            logger.error(f"Error cleaning up old files: {str(e)}")
+        if self.socketio:
+            # Emitting to 'status' channel, which is listened by handleStatusUpdate in frontend
+            self.socketio.emit('status', {'message': message})
