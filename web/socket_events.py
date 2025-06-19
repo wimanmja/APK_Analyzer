@@ -1,7 +1,7 @@
 from flask_socketio import emit
 import logging
-import time # Import the time module for measuring runtime
-import os   # Import os module for path operations, if needed
+import time # [MODIFIED] Import the time module for measuring runtime
+import os   # [ADDED] Import os module for original_filename path operations, if needed
 
 class SocketEvents:
     """Handle SocketIO events for real-time communication and orchestrate analysis"""
@@ -34,15 +34,17 @@ class SocketEvents:
         def handle_ping():
             emit('pong', {'message': 'Server is alive'})
 
-        # No direct 'start_analysis' event handled here unless you change frontend to emit it.
-        # The main analysis flow is assumed to be initiated by start_full_analysis method called from routes.py
-        pass # No new @self.socketio.on events are added here for this specific task.
+        # [MODIFIED] Note: The main analysis flow is now initiated by
+        # start_full_analysis method which is called from routes.py /upload endpoint.
+        # So, no direct @socketio.on decorator for analysis start here.
+        pass
 
+    # [ADDED] Method to orchestrate the full analysis process.
+    # This method is designed to be called from routes.py (e.g., from the /upload endpoint)
+    # after the file has been successfully saved.
     def start_full_analysis(self, file_path: str, original_filename: str):
         """
         Orchestrates the full analysis process for an APK.
-        This method is designed to be called from routes.py (e.g., from the /upload endpoint)
-        after the file has been successfully saved.
 
         Args:
             file_path (str): Absolute path to the uploaded APK file.
@@ -50,18 +52,19 @@ class SocketEvents:
 
         Returns:
             dict: A dictionary containing the status of the analysis, and results if successful.
+                  This return value is primarily for the HTTP endpoint caller in routes.py.
         """
-        # --- Start timer to measure overall analysis runtime ---
+        # [ADDED] Start timer to measure overall analysis runtime
         start_time = time.time()
         logging.info(f"Starting full analysis for {original_filename}...")
 
-        # Emit an initial status message to the frontend
+        # Emit an initial status message to the frontend via a specific analysis_status channel
         self.socketio.emit('analysis_status', {'message': 'Starting analysis...'})
 
-        # Initialize analysis results structure
+        # Initialize analysis results structure with default placeholders
         analysis_results = {
             'apk_name': original_filename,
-            'apk_size_mb': None, # Will be filled by apk_service
+            'apk_size_mb': None, # Will be filled by apk_service.decompile_apk
             'permissions': [],
             'obfuscation': {},
             'manifest_content': 'Not extracted', # Placeholder, you might implement extraction later
@@ -75,11 +78,13 @@ class SocketEvents:
 
         if not success_decompile:
             error_message = decompiled_data_or_error # If failure, this is the error string
+            # Emit error status to frontend via 'analysis_complete' channel
             self.socketio.emit('analysis_complete', {'status': 'error', 'message': f'Decompilation failed: {error_message}'})
+            # Return error for the calling HTTP endpoint (routes.py)
             return {'status': 'error', 'message': f'Decompilation failed: {error_message}'}
         else:
             decompiled_dir = decompiled_data_or_error # If success, this is the output directory
-            analysis_results['apk_size_mb'] = apk_size_mb # Store APK size in results
+            analysis_results['apk_size_mb'] = apk_size_mb # [ADDED] Store APK size in results
 
         # 2. Analyze Permissions
         logging.info("Analyzing permissions...")
@@ -100,6 +105,7 @@ class SocketEvents:
             self.socketio.emit('analysis_status', {'message': f'Obfuscation analysis failed: {obfuscation_data}'})
 
         # --- TODO: Add Payload/Script Analysis Here when implemented ---
+        # If you implement payload analysis, call it here:
         # logging.info("Analyzing dangerous payloads...")
         # success_payload, payload_findings = self.payload_analysis_service.analyze_payloads(decompiled_dir)
         # if success_payload:
@@ -109,21 +115,22 @@ class SocketEvents:
         #    self.socketio.emit('analysis_status', {'message': f'Payload analysis failed: {payload_findings}'})
         # --- END TODO ---
 
-        # --- End timer and calculate runtime ---
+        # [ADDED] End timer and calculate total runtime
         end_time = time.time()
         runtime_seconds = round(end_time - start_time, 2) # Calculate total runtime in seconds
         analysis_results['runtime_seconds'] = runtime_seconds
         analysis_results['runtime_display'] = self._format_runtime(runtime_seconds) # Format for display
 
         logging.info(f"Full analysis for {original_filename} completed in {runtime_seconds} seconds.")
-        # Emit final status and complete analysis results to the frontend
+        # Emit final status message to the frontend
         self.socketio.emit('analysis_status', {'message': 'Analysis complete. Displaying results.'})
-        # Send all collected analysis results to the frontend via 'analysis_complete' event
+        # Emit the complete analysis results to the frontend via 'analysis_complete' event
         self.socketio.emit('analysis_complete', {'status': 'success', 'results': analysis_results})
 
         # Return a success response (primarily for the HTTP endpoint caller in routes.py)
         return {'status': 'success', 'message': 'Analysis initiated', 'results': analysis_results}
 
+    # [ADDED] Helper function to format time duration into a human-readable string.
     def _format_runtime(self, seconds: float) -> str:
         """
         Helper function to format time duration into a human-readable string.
@@ -136,7 +143,7 @@ class SocketEvents:
             str: Formatted time string.
         """
         if seconds < 60:
-            return f"{seconds:.2f} seconds" # Format to 2 decimal places
+            return f"{seconds:.2f} seconds" # Format to 2 decimal places for sub-minute times
         elif seconds < 3600:
             minutes = int(seconds // 60)
             remaining_seconds = round(seconds % 60, 2)
