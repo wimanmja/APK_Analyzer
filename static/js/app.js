@@ -679,6 +679,41 @@ class UIManager {
     <div class="obfuscation-explanation">
       <h4>🔍 What is Code Obfuscation?</h4>
       <p>Code obfuscation is a technique used to make source code difficult to understand while preserving its functionality. While sometimes used for legitimate intellectual property protection, it can also hide malicious behavior.</p>
+      
+      <div class="obfuscation-details">
+        <h5>Common Obfuscation Techniques:</h5>
+        <ul>
+          <li><strong>Name Mangling:</strong> Replacing meaningful class, method, and variable names with short, meaningless identifiers</li>
+          <li><strong>Control Flow Obfuscation:</strong> Adding unnecessary jumps, loops, and conditional statements to confuse analysis</li>
+          <li><strong>String Encryption:</strong> Encrypting string literals and decrypting them at runtime</li>
+          <li><strong>Dead Code Insertion:</strong> Adding code that never executes but complicates analysis</li>
+          <li><strong>Reflection Usage:</strong> Using Java reflection to hide method calls and class instantiations</li>
+        </ul>
+      </div>
+
+      <div class="legitimate-vs-malicious">
+        <h5>Legitimate vs Malicious Use:</h5>
+        <div class="comparison-grid">
+          <div class="legitimate-use">
+            <h6>✅ Legitimate Reasons:</h6>
+            <ul>
+              <li>Intellectual property protection</li>
+              <li>Preventing reverse engineering of proprietary algorithms</li>
+              <li>Commercial software protection</li>
+              <li>Anti-piracy measures</li>
+            </ul>
+          </div>
+          <div class="malicious-use">
+            <h6>⚠️ Potential Red Flags:</h6>
+            <ul>
+              <li>Hiding malicious functionality</li>
+              <li>Evading security scanners</li>
+              <li>Concealing data theft operations</li>
+              <li>Masking unauthorized network communications</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   `
     }
@@ -688,6 +723,7 @@ class UIManager {
       html += `
     <div class="indicators-section">
       <h4>🚨 Obfuscation Indicators Found</h4>
+      <p class="indicators-intro">The following patterns were detected in the analyzed code that suggest the use of obfuscation techniques:</p>
       <div class="indicators-grid">
   `
 
@@ -714,11 +750,20 @@ class UIManager {
             <span class="stat-label">Impact:</span>
             <span class="stat-value">${indicatorDetails.impact}</span>
           </div>
+          <div class="stat-item">
+            <span class="stat-label">Severity:</span>
+            <span class="stat-value">${indicator.severity}</span>
+          </div>
         </div>
 
         <div class="indicator-description">
           <h5>Why this indicates obfuscation:</h5>
           <p>${indicatorDetails.explanation}</p>
+        </div>
+
+        <div class="technical-details">
+          <h5>Technical Analysis:</h5>
+          <p>${indicatorDetails.technicalDetails || "This pattern is commonly used in obfuscated code to make analysis more difficult."}</p>
         </div>
 
         <div class="security-implications">
@@ -727,11 +772,33 @@ class UIManager {
             ${indicatorDetails.securityRisks.map((risk) => `<li>${risk}</li>`).join("")}
           </ul>
         </div>
+
+        <div class="detection-confidence">
+          <h5>Detection Confidence:</h5>
+          <div class="confidence-bar">
+            <div class="confidence-fill ${indicator.severity}" style="width: ${this.getConfidencePercentage(indicator.severity)}%"></div>
+          </div>
+          <span class="confidence-text">${this.getConfidenceText(indicator.severity)}</span>
+        </div>
       </div>
     `
       })
 
       html += `
+      </div>
+      
+      <div class="indicators-summary">
+        <h5>📊 Analysis Summary:</h5>
+        <p>Found <strong>${obfuscation.indicators.length}</strong> different types of obfuscation indicators with a total of <strong>${obfuscation.indicators.reduce((sum, ind) => sum + ind.count, 0).toLocaleString()}</strong> occurrences across the analyzed code.</p>
+        
+        <div class="severity-breakdown">
+          <h6>Severity Breakdown:</h6>
+          <div class="severity-stats">
+            <span class="severity-stat high">High: ${obfuscation.indicators.filter((i) => i.severity === "high").length}</span>
+            <span class="severity-stat medium">Medium: ${obfuscation.indicators.filter((i) => i.severity === "medium").length}</span>
+            <span class="severity-stat low">Low: ${obfuscation.indicators.filter((i) => i.severity === "low").length}</span>
+          </div>
+        </div>
       </div>
     </div>
   `
@@ -742,35 +809,104 @@ class UIManager {
       html += this.generateRealObfuscatedCodeSection(codeSnippets)
     }
 
-    // Add recommendations section
+    // Add comprehensive recommendations section
     if (isObfuscated) {
       html += `
     <div class="recommendations-section">
       <h4>🛡️ Security Recommendations</h4>
+      <p class="recommendations-intro">Based on the obfuscation analysis, here are our security recommendations organized by priority:</p>
+      
       <div class="recommendations-grid">
         <div class="recommendation-card high-priority">
-          <h5>🔴 High Priority</h5>
-          <ul>
-            <li>Verify the app source and developer reputation</li>
-            <li>Check app permissions carefully before installation</li>
-            <li>Monitor app behavior after installation</li>
-          </ul>
+          <h5>🔴 High Priority Actions</h5>
+          <div class="recommendation-content">
+            <h6>Immediate Actions Required:</h6>
+            <ul>
+              <li><strong>Verify App Source:</strong> Confirm the app comes from a trusted developer and official app store</li>
+              <li><strong>Check Digital Signatures:</strong> Ensure the app is properly signed by the claimed developer</li>
+              <li><strong>Review Permissions Carefully:</strong> Examine all requested permissions and question any that seem excessive</li>
+              <li><strong>Monitor Installation:</strong> Watch for unusual behavior during and after installation</li>
+              <li><strong>Sandbox Testing:</strong> If possible, test the app in an isolated environment first</li>
+            </ul>
+            
+            <h6>Red Flags to Watch For:</h6>
+            <ul>
+              <li>Requests for admin privileges without clear justification</li>
+              <li>Unusual network activity or data transmission</li>
+              <li>Attempts to access sensitive device features</li>
+              <li>Persistence mechanisms or auto-start behavior</li>
+            </ul>
+          </div>
         </div>
+        
         <div class="recommendation-card medium-priority">
-          <h5>🟡 Medium Priority</h5>
-          <ul>
-            <li>Use additional security scanning tools</li>
-            <li>Check for similar apps with better transparency</li>
-            <li>Review user reviews and ratings</li>
-            <li>Keep your device and security software updated</li>
-          </ul>
+          <h5>🟡 Medium Priority Actions</h5>
+          <div class="recommendation-content">
+            <h6>Additional Security Measures:</h6>
+            <ul>
+              <li><strong>Use Multiple Scanners:</strong> Run the APK through additional security scanning tools</li>
+              <li><strong>Check App Reputation:</strong> Research the app and developer online for reviews and security reports</li>
+              <li><strong>Review Similar Apps:</strong> Look for alternative apps with better transparency and security practices</li>
+              <li><strong>Enable Security Features:</strong> Ensure device security features like app verification are enabled</li>
+              <li><strong>Regular Updates:</strong> Keep your device OS and security software up to date</li>
+              <li><strong>Backup Important Data:</strong> Ensure you have recent backups before installing suspicious apps</li>
+            </ul>
+            
+            <h6>Monitoring Recommendations:</h6>
+            <ul>
+              <li>Monitor network traffic for unusual patterns</li>
+              <li>Check battery usage for unexpected drain</li>
+              <li>Review app permissions periodically</li>
+              <li>Watch for new files or changes to system settings</li>
+            </ul>
+          </div>
         </div>
+        
         <div class="recommendation-card low-priority">
-          <h5>🟢 General Security</h5>
-          <ul>
-            <li>Use app sandboxing when possible</li>
-            <li>Regular security audits of installed apps</li>
-          </ul>
+          <h5>🟢 General Security Best Practices</h5>
+          <div class="recommendation-content">
+            <h6>Long-term Security Practices:</h6>
+            <ul>
+              <li><strong>App Sandboxing:</strong> Use app isolation features when available</li>
+              <li><strong>Regular Security Audits:</strong> Periodically review all installed apps</li>
+              <li><strong>Security Education:</strong> Stay informed about mobile security threats</li>
+              <li><strong>Principle of Least Privilege:</strong> Only grant necessary permissions to apps</li>
+              <li><strong>Incident Response Plan:</strong> Know how to respond if malicious behavior is detected</li>
+            </ul>
+            
+            <h6>Preventive Measures:</h6>
+            <ul>
+              <li>Use reputable app stores and avoid sideloading when possible</li>
+              <li>Enable automatic security updates</li>
+              <li>Consider using mobile device management (MDM) solutions</li>
+              <li>Implement network-level security monitoring</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="risk-assessment">
+        <h5>🎯 Risk Assessment Based on Analysis:</h5>
+        <div class="risk-factors">
+          <div class="risk-factor">
+            <span class="risk-label">Obfuscation Confidence:</span>
+            <span class="risk-value ${this.getObfuscationRiskLevel(confidence)}">${confidence}% (${this.getObfuscationRiskText(confidence)})</span>
+          </div>
+          <div class="risk-factor">
+            <span class="risk-label">Code Snippets Found:</span>
+            <span class="risk-value">${codeSnippets.length.toLocaleString()} obfuscated patterns</span>
+          </div>
+          <div class="risk-factor">
+            <span class="risk-label">Indicator Types:</span>
+            <span class="risk-value">${obfuscation.indicators?.length || 0} different obfuscation techniques</span>
+          </div>
+        </div>
+        
+        <div class="overall-recommendation">
+          <h6>Overall Recommendation:</h6>
+          <p class="recommendation-text ${this.getObfuscationRiskLevel(confidence)}">
+            ${this.getOverallRecommendation(confidence, codeSnippets.length)}
+          </p>
         </div>
       </div>
     </div>
@@ -801,6 +937,30 @@ class UIManager {
         <div class="snippets-summary">
           <span class="total-snippets">Total: ${totalSnippets.toLocaleString()} snippets</span>
           <span class="pages-info">Pages: ${totalPages}</span>
+          <span class="analysis-note">Showing actual obfuscated code patterns detected in the APK</span>
+        </div>
+      </div>
+      
+      <div class="code-analysis-info">
+        <h5>📋 Code Analysis Information:</h5>
+        <p>The following code snippets represent actual obfuscated patterns found during static analysis of the APK. Each snippet shows the context where obfuscation techniques were detected, including the specific patterns that triggered the detection.</p>
+        
+        <div class="snippet-legend">
+          <h6>Snippet Information Legend:</h6>
+          <div class="legend-items">
+            <div class="legend-item">
+              <span class="legend-color high"></span>
+              <span class="legend-text">High Severity - Strong indicators of obfuscation</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color medium"></span>
+              <span class="legend-text">Medium Severity - Moderate obfuscation indicators</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color low"></span>
+              <span class="legend-text">Low Severity - Weak or ambiguous indicators</span>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -811,6 +971,7 @@ class UIManager {
         </button>
         <div class="page-info">
           <span>Page <span id="currentPage">1</span> of <span id="totalPages">${totalPages}</span></span>
+          <span class="page-details">(Showing snippets 1-${Math.min(snippetsPerPage, totalSnippets)} of ${totalSnippets})</span>
         </div>
         <button class="pagination-btn" id="nextBtn" onclick="changeObfuscationPage(1)" ${totalPages <= 1 ? "disabled" : ""}>
           Next
@@ -834,6 +995,16 @@ class UIManager {
           Next
           <svg class="icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
         </button>
+      </div>
+      
+      <div class="code-analysis-footer">
+        <h5>🔬 Analysis Notes:</h5>
+        <ul>
+          <li><strong>Context Preservation:</strong> Each snippet includes surrounding code context for better understanding</li>
+          <li><strong>Pattern Matching:</strong> Highlighted patterns show the specific obfuscation techniques detected</li>
+          <li><strong>File Location:</strong> Full file paths help identify the scope of obfuscation across the application</li>
+          <li><strong>Line Numbers:</strong> Precise locations enable manual verification and deeper analysis</li>
+        </ul>
       </div>
     </div>
   `
@@ -886,15 +1057,39 @@ class UIManager {
             <span class="snippet-severity ${snippet.severity || "medium"}">${(snippet.severity || "medium").toUpperCase()}</span>
           </div>
           <div class="snippet-location">
-            <span class="file-path">${snippet.file || "Unknown file"}</span>
+            <span class="file-path" title="${snippet.file || "Unknown file"}">${this.truncateFilePath(snippet.file || "Unknown file")}</span>
             <span class="line-number">Lines ${snippet.line_start || "?"}-${snippet.line_end || "?"}</span>
+          </div>
+        </div>
+        
+        <div class="snippet-metadata">
+          <div class="metadata-item">
+            <span class="metadata-label">Pattern Type:</span>
+            <span class="metadata-value">${snippet.pattern_type || "Unknown"}</span>
+          </div>
+          <div class="metadata-item">
+            <span class="metadata-label">Detection ID:</span>
+            <span class="metadata-value">${snippet.id || "N/A"}</span>
+          </div>
+          <div class="metadata-item">
+            <span class="metadata-label">Context Lines:</span>
+            <span class="metadata-value">${snippet.context_start || "?"} - ${snippet.context_end || "?"}</span>
           </div>
         </div>
         
         <div class="real-code-snippet">
           <div class="code-block">
-            <h6>Detected Pattern: ${snippet.matched_text ? this.escapeHtml(snippet.matched_text) : "Pattern match"}</h6>
-            <pre><code>${this.escapeHtml(snippet.code_snippet || snippet.matched_line || "Code not available")}</code></pre>
+            <h6>🎯 Detected Pattern: <code>${snippet.matched_text ? this.escapeHtml(snippet.matched_text) : "Pattern match"}</code></h6>
+            <div class="matched-line">
+              <strong>Matched Line:</strong> <code>${this.escapeHtml(snippet.matched_line || "Line not available")}</code>
+            </div>
+            <h6>📄 Code Context:</h6>
+            <pre><code>${this.escapeHtml(snippet.code_snippet || "Code not available")}</code></pre>
+          </div>
+          
+          <div class="snippet-analysis">
+            <h6>🔍 Analysis Details:</h6>
+            <p>${this.getSnippetAnalysis(snippet)}</p>
           </div>
         </div>
       </div>
@@ -927,6 +1122,18 @@ class UIManager {
       if (el) el.textContent = totalPages
     })
 
+    // Update page details
+    const pagination = window.obfuscationPagination
+    if (pagination) {
+      const startIndex = (currentPage - 1) * pagination.snippetsPerPage + 1
+      const endIndex = Math.min(currentPage * pagination.snippetsPerPage, pagination.allSnippets.length)
+
+      const pageDetailsElements = document.querySelectorAll(".page-details")
+      pageDetailsElements.forEach((el) => {
+        if (el) el.textContent = `(Showing snippets ${startIndex}-${endIndex} of ${pagination.allSnippets.length})`
+      })
+    }
+
     // Update button states
     const prevButtons = document.querySelectorAll(".pagination-btn:first-child")
     const nextButtons = document.querySelectorAll(".pagination-btn:last-child")
@@ -945,6 +1152,86 @@ class UIManager {
     }
 
     console.log("Pagination controls updated")
+  }
+
+  getSnippetAnalysis(snippet) {
+    const patternType = snippet.pattern_type || snippet.type || "unknown"
+    const severity = snippet.severity || "medium"
+
+    const analyses = {
+      short_class_names:
+        "This snippet shows a class with an extremely short name, which is a strong indicator of name obfuscation. Legitimate classes typically have descriptive names that reflect their purpose.",
+      short_method_names:
+        "This code contains methods with very short names (1-2 characters), suggesting systematic name obfuscation to hide the original method purposes.",
+      short_field_names:
+        "The field names in this code are unusually short, indicating field name obfuscation that makes it difficult to understand the data structure.",
+      synthetic_methods:
+        "This shows compiler-generated synthetic methods, which can indicate complex obfuscation or the use of inner classes to hide functionality.",
+      access_methods:
+        "These are synthetic access methods (access$XXX) generated to bypass Java access restrictions, often used in obfuscated code.",
+      obfuscated_packages:
+        "The package structure uses single-character names instead of meaningful hierarchical naming, indicating package name obfuscation.",
+      string_encryption:
+        "This code pattern suggests string encryption or encoding, which is used to hide sensitive strings from static analysis.",
+      reflection:
+        "This snippet shows the use of Java reflection, which can be used to dynamically access classes and methods, making static analysis more difficult.",
+      base64_strings:
+        "Base64 encoded strings detected, which may be used to hide configuration data, URLs, or other sensitive information.",
+      hex_strings:
+        "Hexadecimal encoded strings found, potentially hiding binary data, encryption keys, or other sensitive information.",
+      dollar_classes:
+        "Inner classes with obfuscated names detected, often used to hide complex class relationships and callback mechanisms.",
+    }
+
+    const defaultAnalysis = `This code pattern (${patternType}) with ${severity} severity suggests the use of obfuscation techniques that make the code harder to analyze and understand.`
+
+    return analyses[patternType] || defaultAnalysis
+  }
+
+  truncateFilePath(filePath, maxLength = 50) {
+    if (filePath.length <= maxLength) return filePath
+    const parts = filePath.split("/")
+    if (parts.length <= 2) return filePath
+
+    return `.../${parts[parts.length - 2]}/${parts[parts.length - 1]}`
+  }
+
+  getConfidencePercentage(severity) {
+    switch (severity) {
+      case "high":
+        return 85
+      case "medium":
+        return 65
+      case "low":
+        return 40
+      default:
+        return 50
+    }
+  }
+
+  getConfidenceText(severity) {
+    switch (severity) {
+      case "high":
+        return "High confidence - Strong obfuscation indicator"
+      case "medium":
+        return "Medium confidence - Moderate obfuscation indicator"
+      case "low":
+        return "Low confidence - Weak obfuscation indicator"
+      default:
+        return "Unknown confidence level"
+    }
+  }
+
+  getOverallRecommendation(confidence, snippetsCount) {
+    if (confidence >= 80) {
+      return `🚨 HIGH RISK: Strong obfuscation detected with ${confidence}% confidence and ${snippetsCount} code patterns. Exercise extreme caution and consider avoiding this app unless from a highly trusted source.`
+    } else if (confidence >= 60) {
+      return `⚠️ MEDIUM RISK: Moderate obfuscation detected with ${confidence}% confidence and ${snippetsCount} code patterns. Proceed with caution and implement additional security measures.`
+    } else if (confidence >= 40) {
+      return `🟡 LOW RISK: Some obfuscation patterns detected with ${confidence}% confidence and ${snippetsCount} code patterns. Monitor the app behavior and verify the source.`
+    } else {
+      return `✅ MINIMAL RISK: Low confidence obfuscation detection (${confidence}%) with ${snippetsCount} patterns. May be legitimate protection or false positives.`
+    }
   }
 
   getObfuscationRiskLevel(confidence) {
@@ -970,11 +1257,14 @@ class UIManager {
         impact: "Code Readability",
         explanation:
           "Classes with extremely short names (1-2 characters) are a strong indicator of name obfuscation. Legitimate code typically uses descriptive class names that reflect their purpose.",
+        technicalDetails:
+          "Detected through pattern matching of class declarations with names shorter than 3 characters, excluding common abbreviations and standard library classes.",
         securityRisks: [
           "Makes reverse engineering analysis difficult",
           "Hides the actual purpose of classes",
           "Complicates security auditing processes",
           "May indicate attempt to hide malicious functionality",
+          "Reduces code maintainability and transparency",
         ],
       },
       short_method_names: {
@@ -984,11 +1274,14 @@ class UIManager {
         impact: "Code Readability",
         explanation:
           "Methods with extremely short names (1-2 characters) are a strong indicator of name obfuscation. Legitimate code typically uses descriptive method names.",
+        technicalDetails:
+          "Identified by analyzing method declarations and filtering out standard Java methods, getters/setters, and common abbreviations.",
         securityRisks: [
           "Makes reverse engineering analysis difficult",
           "Hides malicious function names and purposes",
           "Complicates security auditing processes",
           "May indicate attempt to hide suspicious behavior",
+          "Obscures API and interface understanding",
         ],
       },
       short_field_names: {
@@ -998,11 +1291,14 @@ class UIManager {
         impact: "Code Readability",
         explanation:
           "Fields with single character names are a strong indicator of name obfuscation. Legitimate code typically uses descriptive field names.",
+        technicalDetails:
+          "Detected by examining field declarations and excluding common single-letter variables like loop counters and mathematical variables.",
         securityRisks: [
           "Makes data structure analysis difficult",
           "Hides the purpose of stored data",
           "Complicates security auditing",
           "May conceal sensitive information storage",
+          "Reduces code documentation value",
         ],
       },
       synthetic_methods: {
@@ -1012,11 +1308,14 @@ class UIManager {
         impact: "Code Structure",
         explanation:
           "Synthetic methods are compiler-generated methods that don't exist in the original source code. A high number of these can indicate obfuscation or complex code generation.",
+        technicalDetails:
+          "Identified by the 'synthetic' modifier in method declarations, which indicates compiler-generated code not present in original source.",
         securityRisks: [
           "Can hide actual program logic",
           "Makes static analysis more difficult",
           "May indicate code generation tools",
           "Can complicate debugging and analysis",
+          "Obscures original code structure",
         ],
       },
       access_methods: {
@@ -1026,11 +1325,14 @@ class UIManager {
         impact: "Access Control",
         explanation:
           "Synthetic access methods (access$XXX) are generated by the compiler to access private members from inner classes. Many of these can indicate obfuscation.",
+        technicalDetails:
+          "Detected by pattern matching method names starting with 'access$' followed by numbers, which are generated for inner class access.",
         securityRisks: [
           "Can bypass intended access restrictions",
           "Makes access control analysis difficult",
           "May indicate complex inner class structures",
           "Can hide actual data access patterns",
+          "Complicates security boundary analysis",
         ],
       },
       obfuscated_packages: {
@@ -1040,11 +1342,14 @@ class UIManager {
         impact: "Code Organization",
         explanation:
           "Package names with single characters indicate package name obfuscation. Legitimate packages typically use meaningful, hierarchical names.",
+        technicalDetails:
+          "Identified by analyzing package declarations for single-character segments that don't follow standard Java naming conventions.",
         securityRisks: [
           "Hides the actual organization of code",
           "Makes package-based security analysis difficult",
           "Can conceal malicious package structures",
           "Complicates dependency analysis",
+          "Obscures code architecture understanding",
         ],
       },
       dollar_classes: {
@@ -1054,11 +1359,14 @@ class UIManager {
         impact: "Class Structure",
         explanation:
           "Inner classes with dollar signs and short names often indicate obfuscated inner class structures used to hide implementation details.",
+        technicalDetails:
+          "Detected by analyzing class names containing '$' symbols with short or meaningless names, excluding standard anonymous class patterns.",
         securityRisks: [
           "Can hide complex class relationships",
           "Makes inner class analysis difficult",
           "May conceal callback mechanisms",
           "Can hide event handling logic",
+          "Obscures object-oriented design patterns",
         ],
       },
       reflection: {
@@ -1068,11 +1376,14 @@ class UIManager {
         impact: "Runtime Behavior",
         explanation:
           "Excessive use of Java reflection allows code to dynamically access classes and methods at runtime, making static analysis difficult and potentially hiding malicious behavior.",
+        technicalDetails:
+          "Identified by detecting calls to reflection APIs like Class.forName, getMethod, getDeclaredMethod, and invoke operations.",
         securityRisks: [
           "Bypasses compile-time security checks",
           "Can access private methods and fields",
           "Makes malware detection more difficult",
           "Enables dynamic code loading and execution",
+          "Can circumvent security policies",
         ],
       },
       string_encryption: {
@@ -1082,11 +1393,14 @@ class UIManager {
         impact: "Data Hiding",
         explanation:
           "Encrypted or encoded strings hide sensitive information like URLs, API keys, or malicious commands from static analysis tools.",
+        technicalDetails:
+          "Detected by identifying patterns of string manipulation involving encryption, decryption, encoding, or decoding operations.",
         securityRisks: [
           "Hides malicious URLs and endpoints",
           "Conceals sensitive API keys and tokens",
           "Makes network traffic analysis difficult",
           "Can hide command and control communications",
+          "Obscures configuration and settings",
         ],
       },
       base64_strings: {
@@ -1095,11 +1409,14 @@ class UIManager {
         severity: "medium",
         impact: "Data Encoding",
         explanation: "Base64 encoded strings can hide sensitive data, URLs, or commands from simple text analysis.",
+        technicalDetails:
+          "Identified by pattern matching strings that conform to Base64 encoding format with sufficient length to indicate intentional encoding.",
         securityRisks: [
           "Hides sensitive configuration data",
           "Can conceal malicious URLs",
           "Makes static analysis more difficult",
           "May hide encrypted payloads",
+          "Obscures embedded resources",
         ],
       },
       hex_strings: {
@@ -1109,11 +1426,14 @@ class UIManager {
         impact: "Data Encoding",
         explanation:
           "Hexadecimal encoded strings can hide binary data, encryption keys, or other sensitive information.",
+        technicalDetails:
+          "Detected by identifying string literals containing only hexadecimal characters with sufficient length to indicate intentional encoding.",
         securityRisks: [
           "Conceals binary payloads",
           "Hides encryption keys",
           "Makes pattern detection difficult",
           "Can hide shellcode or exploits",
+          "Obscures cryptographic material",
         ],
       },
       proguard_signatures: {
@@ -1123,11 +1443,14 @@ class UIManager {
         impact: "Build Process",
         explanation:
           "ProGuard signatures indicate the code has been processed by ProGuard, a common obfuscation and optimization tool.",
+        technicalDetails:
+          "Identified by detecting ProGuard-specific comments and signatures in compiled code that indicate processing by the obfuscation tool.",
         securityRisks: [
           "Indicates intentional code obfuscation",
           "May hide original source structure",
           "Can make debugging more difficult",
           "Suggests commercial or protected code",
+          "May indicate intellectual property protection",
         ],
       },
     }
@@ -1139,7 +1462,9 @@ class UIManager {
         severity: "unknown",
         impact: "Unknown",
         explanation: "This obfuscation technique was detected but detailed analysis is not available.",
-        securityRisks: ["Unknown security implications"],
+        technicalDetails:
+          "Pattern detected through heuristic analysis but specific technical details are not available for this indicator type.",
+        securityRisks: ["Unknown security implications", "Requires manual analysis for proper assessment"],
       }
     )
   }
