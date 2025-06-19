@@ -1,7 +1,7 @@
 import os
 import subprocess
 import logging
-import time # Import the time module, needed for os.path.getsize in some contexts, though not strictly for this function
+import time # [ADDED] Import the time module
 
 class ApkService:
     """Service for APK decompilation and analysis"""
@@ -30,11 +30,9 @@ class ApkService:
             tuple: (success, output_dir or error_message, apk_size_mb)
         """
         try:
-            # Get APK file size
-            # os.path.getsize() returns size in bytes
+            # [ADDED] Get APK file size
             apk_size_bytes = os.path.getsize(apk_path)
-            # Convert bytes to megabytes (MB) and round to 2 decimal places
-            apk_size_mb = round(apk_size_bytes / (1024 * 1024), 2)
+            apk_size_mb = round(apk_size_bytes / (1024 * 1024), 2) # Convert to MB, round to 2 decimal places
 
             # Normalize paths for cross-platform compatibility (Windows vs Linux)
             apk_path = apk_path.replace("\\", "/")
@@ -96,13 +94,13 @@ class ApkService:
             # Check if decompilation was successful (returncode 0 indicates success)
             if returncode == 0:
                 self._emit_status("Decompilation successful")
-                # Return success status, output directory, and APK size
+                # [MODIFIED] Return success status, output directory, and APK size
                 return True, output_dir, apk_size_mb
             else:
                 error_msg = f"Decompilation failed: {stderr}"
                 logging.error(error_msg)
                 self._emit_status(f"Error: {stderr}")
-                # Return failure status, error message, and None for size
+                # [MODIFIED] Return failure status, error message, and None for size
                 return False, error_msg, None
 
         except Exception as e:
@@ -110,7 +108,7 @@ class ApkService:
             error_msg = f"Error decompiling APK: {str(e)}"
             logging.exception(error_msg) # Log full traceback
             self._emit_status(f"Error: {str(e)}")
-            # Return failure status, error message, and None for size
+            # [MODIFIED] Return failure status, error message, and None for size
             return False, error_msg, None
 
     def _emit_status(self, message):
