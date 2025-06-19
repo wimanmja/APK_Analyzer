@@ -4,32 +4,33 @@
 
 class APKAnalyzer {
   constructor() {
-    this.analysisData = null
-    this.initElements()
-    this.initComponents()
-    this.initEventListeners()
+    this.analysisData = null // Stores all analysis results
+    this.initElements() // Initializes DOM elements
+    this.initComponents() // Initializes helper components (SocketManager, UIManager, FileUploader)
+    this.initEventListeners() // Initializes event listeners
 
-    // Make sure this instance is available globally
+    // Make sure this instance is available globally for global functions to access
     window.apkAnalyzer = this
   }
 
+  // Initializes references to HTML elements by their IDs
   initElements() {
     this.elements = {
-      // Pages
+      // Main pages
       uploadPage: document.getElementById("uploadPage"),
       summaryPage: document.getElementById("summaryPage"),
       detailPage: document.getElementById("detailPage"),
 
-      // Upload elements
+      // Upload-related elements
       uploadForm: document.getElementById("uploadForm"),
       fileInput: document.getElementById("fileInput"),
       uploadArea: document.getElementById("uploadArea"),
       fileName: document.getElementById("fileName"),
       submitButton: document.getElementById("submitButton"),
       loadingContainer: document.getElementById("loadingContainer"),
-      progressFill: document.getElementById("progressFill"),
+      progressFill: document.getElementById("progressFill"), // For the progress bar
 
-      // Summary elements
+      // Summary page elements
       apkName: document.getElementById("apkName"),
       securityScore: document.getElementById("securityScore"),
       apkInfo: document.getElementById("apkInfo"),
@@ -37,31 +38,33 @@ class APKAnalyzer {
       obfuscationStatus: document.getElementById("obfuscationStatus"),
       keyFindings: document.getElementById("keyFindings"),
 
-      // Detail elements
+      // Detail page elements
       detailApkName: document.getElementById("detailApkName"),
       permissionsList: document.getElementById("permissionsList"),
       obfuscationDetails: document.getElementById("obfuscationDetails"),
       manifestContent: document.getElementById("manifestContent"),
       fileStructure: document.getElementById("fileStructure"),
 
-      // Common elements
+      // Common elements (messages)
       messageContainer: document.getElementById("messageContainer"),
       messageIcon: document.getElementById("messageIcon"),
       messageText: document.getElementById("messageText"),
     }
   }
 
+  // Initializes instances of helper classes
   initComponents() {
-    this.socketManager = new SocketManager()
-    this.uiManager = new UIManager(this.elements)
-    this.fileUploader = new FileUploader(this.elements, this.uiManager)
+    this.socketManager = new SocketManager() // Manages WebSocket communication
+    this.uiManager = new UIManager(this.elements) // Manages all UI updates
+    this.fileUploader = new FileUploader(this.elements, this.uiManager) // Manages file upload functionality
   }
 
+  // Sets up event listeners for form submission and WebSocket events
   initEventListeners() {
-    // Form submission
+    // Listener for upload form submission
     this.elements.uploadForm.addEventListener("submit", this.handleFormSubmit.bind(this))
 
-    // Socket events - listen for your existing events
+    // Socket.IO event listeners from the backend
     this.socketManager.on("status", this.handleStatusUpdate.bind(this))
     this.socketManager.on("permissions", this.handlePermissionsReceived.bind(this))
     this.socketManager.on("obfuscation", this.handleObfuscationResults.bind(this))
@@ -70,11 +73,13 @@ class APKAnalyzer {
     this.socketManager.on("analysis_progress", this.handleAnalysisProgress.bind(this))
   }
 
+  // Handler for generic status updates from the server
   handleStatusUpdate(data) {
     console.log("Status update:", data)
-    // Handle status updates if needed
+    // Can be used for additional logging or debugging
   }
 
+  // Handler for analysis status updates (informative messages)
   handleAnalysisStatus(data) {
     console.log("Analysis status:", data)
     if (data.message) {
@@ -82,46 +87,50 @@ class APKAnalyzer {
     }
   }
 
+  // Handler for analysis progress updates
   handleAnalysisProgress(data) {
     console.log("Analysis progress:", data)
     if (data.progress !== undefined) {
-      this.elements.progressFill.style.width = `${data.progress}%`
+      this.elements.progressFill.style.width = `${data.progress}%` // Fills the progress bar
     }
     if (data.message) {
       const loadingText = document.querySelector(".loading-text")
       if (loadingText) {
-        loadingText.textContent = data.message
+        loadingText.textContent = data.message // Updates the text below the progress bar
       }
     }
   }
 
+  // Handler when the upload form is submitted
   handleFormSubmit(e) {
-    e.preventDefault()
+    e.preventDefault() // Prevents page reload
 
-    if (!this.fileUploader.validateFile()) {
+    if (!this.fileUploader.validateFile()) { // Validates the selected file
       return
     }
 
     // Start loading state
     this.uiManager.setLoading(true)
     this.uiManager.showMessage("Processing your APK file...", "info")
+    // Hide previous permissions results if any
+    // this.uiManager.hidePermissions(); // This method doesn't exist in current UIManager, assuming it's meant to clear results
 
-    // Upload the file using your existing endpoint
-    this.uploadFile()
+    this.uploadFile() // Starts the file upload process
   }
 
+  // Uploads the APK file to the server
   async uploadFile() {
     try {
-      const formData = new FormData(this.elements.uploadForm)
+      const formData = new FormData(this.elements.uploadForm) // Gets form data
 
-      const response = await fetch("/upload", {
+      const response = await fetch("/upload", { // Sends POST request to /upload endpoint
         method: "POST",
         body: formData,
       })
 
-      const result = await response.json()
+      const result = await response.json() // Parses the JSON response
 
-      if (!response.ok) {
+      if (!response.ok) { // If response is not OK (HTTP error)
         throw new Error(result.error || "An error occurred during upload")
       }
 
@@ -129,25 +138,31 @@ class APKAnalyzer {
       this.currentFileName = this.elements.fileInput.files[0].name
 
       // If we got complete data in the response, use it immediately
+      // This is for cases where the analysis is very fast and backend sends complete_data in HTTP response
       if (result.complete_data) {
         this.analysisData = result.complete_data
 
-        // Store code snippets globally for pagination - FIXED
+        // Store code snippets globally for pagination
         if (this.analysisData.obfuscation && this.analysisData.obfuscation.code_snippets) {
           window.currentObfuscationSnippets = this.analysisData.obfuscation.code_snippets
           console.log(`Stored ${this.analysisData.obfuscation.code_snippets.length} code snippets for pagination`)
         }
 
-        this.showSummaryPage()
+        this.showSummaryPage() // Directly show summary page
         return
       }
 
       // Otherwise, initialize analysis data structure and wait for socket events
+      // This path is taken if backend responds quickly but analysis is still ongoing (updates via WebSocket)
       this.analysisData = {
         fileName: this.currentFileName,
         permissions: [],
         obfuscation: { is_obfuscated: false, confidence: 0, code_snippets: [] },
         apkInfo: { name: this.currentFileName },
+        // These will be updated by handleAnalysisComplete/handlePermissionsReceived/handleObfuscationResults
+        apk_size_mb: null,
+        runtime_seconds: null,
+        runtime_display: null
       }
 
       this.uiManager.showMessage("Analysis started. Please wait...", "info")
@@ -155,15 +170,15 @@ class APKAnalyzer {
       // Set a timeout to check if analysis completes within reasonable time
       this.analysisTimeout = setTimeout(() => {
         this.uiManager.showMessage("Analysis is taking longer than expected. Checking results...", "warning")
-        this.checkAnalysisStatus()
+        this.checkAnalysisStatus() // Call status check function
       }, 30000) // 30 seconds timeout for real analysis
     } catch (error) {
-      this.uiManager.showMessage(`Error: ${error.message}`, "error")
-      this.uiManager.setLoading(false)
+      this.uiManager.showMessage(`Error: ${error.message}`, "error") // Displays error message
+      this.uiManager.setLoading(false) // Stops loading
     }
   }
 
-  // Add this new method to check analysis status
+  // Method to check analysis status if timeout occurs or for manual check
   checkAnalysisStatus() {
     // If we have some data from socket events, show summary
     if (
@@ -178,7 +193,7 @@ class APKAnalyzer {
     }
   }
 
-  // Update the handleAnalysisComplete method to clear timeout
+  // Handler when complete analysis data is received from the server (via Socket.IO)
   handleAnalysisComplete(data) {
     console.log("Analysis complete:", data)
 
@@ -187,32 +202,32 @@ class APKAnalyzer {
       clearTimeout(this.analysisTimeout)
     }
 
-    // Merge all received data
+    // Merge all received data. 'data.results' should contain the full analysis_results object
     if (this.analysisData) {
-      this.analysisData = { ...this.analysisData, ...data }
+      this.analysisData = { ...this.analysisData, ...(data.results || data) } // Merge data.results if it exists, otherwise data
     } else {
-      this.analysisData = data
+      this.analysisData = data.results || data // Assign data.results if it exists, otherwise data
     }
 
-    // Store code snippets globally for pagination - FIXED
-    if (data.obfuscation && data.obfuscation.code_snippets) {
-      window.currentObfuscationSnippets = data.obfuscation.code_snippets
-      console.log(`Stored ${data.obfuscation.code_snippets.length} code snippets for pagination`)
+    // Store code snippets globally for pagination
+    if (this.analysisData.obfuscation && this.analysisData.obfuscation.code_snippets) {
+      window.currentObfuscationSnippets = this.analysisData.obfuscation.code_snippets
+      console.log(`Stored ${this.analysisData.obfuscation.code_snippets.length} code snippets for pagination`)
     }
 
-    // Show summary page
-    this.showSummaryPage()
+    this.showSummaryPage() // Show summary page
   }
 
-  // Update handlePermissionsReceived to trigger summary if we have enough data
+  // Handler when permissions data is received from the server
   handlePermissionsReceived(data) {
     console.log("Permissions received:", data)
     if (this.analysisData) {
       this.analysisData.permissions = data.permissions || []
 
-      // If we have both permissions and obfuscation data, show summary
+      // If we have both permissions and obfuscation data, and still on upload page, show summary
       if (this.analysisData.permissions.length > 0 && this.analysisData.obfuscation) {
         setTimeout(() => {
+          // Check if user is still on the upload page before switching to summary
           if (this.elements.uploadPage.classList.contains("active")) {
             this.showSummaryPage()
           }
@@ -221,20 +236,22 @@ class APKAnalyzer {
     }
   }
 
+  // Handler when obfuscation results are received from the server
   handleObfuscationResults(data) {
     console.log("Obfuscation results received:", data)
     if (this.analysisData) {
       this.analysisData.obfuscation = data
 
-      // Store code snippets globally for pagination - FIXED
+      // Store code snippets globally for pagination
       if (data.code_snippets) {
         window.currentObfuscationSnippets = data.code_snippets
         console.log(`Stored ${data.code_snippets.length} real obfuscation code snippets for pagination`)
       }
 
-      // If we have both permissions and obfuscation data, show summary
+      // If we have both permissions and obfuscation data, and still on upload page, show summary
       if (this.analysisData.permissions.length > 0 && this.analysisData.obfuscation) {
         setTimeout(() => {
+          // Check if user is still on the upload page before switching to summary
           if (this.elements.uploadPage.classList.contains("active")) {
             this.showSummaryPage()
           }
@@ -243,13 +260,15 @@ class APKAnalyzer {
     }
   }
 
+  // Displays the summary page
   showSummaryPage() {
-    this.uiManager.setLoading(false)
-    this.uiManager.hideMessage()
-    this.uiManager.showPage("summary")
-    this.populateSummaryPage()
+    this.uiManager.setLoading(false) // Hide loading indicator
+    this.uiManager.hideMessage() // Hide messages
+    this.uiManager.showPage("summary") // Switch to summary page
+    this.populateSummaryPage() // Populate data on the summary page
   }
 
+  // Displays the detail page
   showDetailPage() {
     console.log("APKAnalyzer.showDetailPage called")
     console.log("Analysis data available:", !!this.analysisData)
@@ -259,11 +278,11 @@ class APKAnalyzer {
       return
     }
 
-    this.uiManager.showPage("detail")
-    this.populateDetailPage()
+    this.uiManager.showPage("detail") // Switch to detail page
+    this.populateDetailPage() // Populate data on the detail page
   }
 
-  // Add method to reset the upload form
+  // Resets the upload form to initial state
   resetUploadForm() {
     console.log("Resetting upload form...")
 
@@ -291,10 +310,10 @@ class APKAnalyzer {
     console.log("Upload form reset complete")
   }
 
+  // Populates data on the summary page
   populateSummaryPage() {
     if (!this.analysisData) {
-      // Show placeholder data if no analysis data available
-      this.showPlaceholderSummary()
+      this.showPlaceholderSummary() // Show placeholder if no data
       return
     }
 
@@ -308,7 +327,8 @@ class APKAnalyzer {
     this.uiManager.updateSecurityScore(securityScore)
 
     // APK Info
-    this.uiManager.updateApkInfo(data.apkInfo || { name: data.fileName })
+    // Pass entire analysisData to updateApkInfo to access apk_size_mb and runtime_display
+    this.uiManager.updateApkInfo(data.apkInfo || { name: data.fileName }, data)
 
     // Permissions Summary
     const permissionsSummary = this.calculatePermissionsSummary(data.permissions || [])
@@ -322,6 +342,7 @@ class APKAnalyzer {
     this.uiManager.updateKeyFindings(keyFindings)
   }
 
+  // Populates data on the detail page
   populateDetailPage() {
     if (!this.analysisData) {
       this.showPlaceholderDetail()
@@ -340,6 +361,7 @@ class APKAnalyzer {
     this.uiManager.updateFileStructure(data.fileStructure || ["File structure not available"])
   }
 
+  // Calculates the security score for the APK
   calculateSecurityScore(data) {
     let score = 100
     const permissions = data.permissions || []
@@ -353,15 +375,14 @@ class APKAnalyzer {
         p.name?.includes("CONTACTS"),
     ).length
 
-    score -= dangerousCount * 5
+    score -= dangerousCount * 5 // Deduct points for dangerous permissions
 
     // Deduct points for obfuscation
     if (data.obfuscation?.is_obfuscated) {
       score -= 20
     }
 
-    // Ensure score is between 0 and 100
-    score = Math.max(0, Math.min(100, score))
+    score = Math.max(0, Math.min(100, score)) // Ensures score is between 0 and 100
 
     let level = "Low"
     if (score >= 80) level = "High"
@@ -370,6 +391,7 @@ class APKAnalyzer {
     return { score, level }
   }
 
+  // Calculates a summary of permissions (count of dangerous, normal, etc.)
   calculatePermissionsSummary(permissions) {
     const summary = {
       total: permissions.length,
@@ -391,6 +413,7 @@ class APKAnalyzer {
     return summary
   }
 
+  // Generates key security findings based on analysis data
   generateKeyFindings(data) {
     const findings = []
     const permissions = data.permissions || []
@@ -432,19 +455,21 @@ class APKAnalyzer {
     return findings
   }
 
+  // Shows placeholder data on the summary page while analysis is in progress
   showPlaceholderSummary() {
     this.elements.apkName.textContent = "Analysis in progress..."
     this.uiManager.updateSecurityScore({ score: 0, level: "Analyzing" })
     this.uiManager.showMessage("Waiting for analysis results...", "info")
   }
 
+  // Shows placeholder data on the detail page while analysis is in progress
   showPlaceholderDetail() {
     this.elements.detailApkName.textContent = "Analysis in progress..."
     this.uiManager.showMessage("Waiting for detailed analysis results...", "info")
   }
 }
 
-// Global functions for navigation - with better error handling
+// Global functions for navigation (accessed from HTML)
 function showUploadPage() {
   console.log("showUploadPage called")
   if (window.apkAnalyzer && window.apkAnalyzer.uiManager) {
@@ -481,6 +506,7 @@ function showDetailPage() {
   }
 }
 
+// Global function to show a specific tab on the detail page
 function showTab(tabName) {
   console.log("showTab called with:", tabName)
 
@@ -506,6 +532,7 @@ function showTab(tabName) {
   }
 }
 
+// Global function to download the analysis report as JSON
 function downloadReport() {
   console.log("downloadReport called")
 
@@ -650,8 +677,8 @@ class UIManager {
     else if (scoreData.level === "Low") scoreClass = "low"
 
     scoreElement.innerHTML = `
-      <div class="score-number">${scoreData.score}</div>
-      <div class="score-level">${scoreData.level} Security</div>
+      <div class="score-number"><span class="math-inline">\{scoreData\.score\}</div\>
+<div class\="score\-level"\></span>{scoreData.level} Security</div>
     `
 
     scoreElement.className = `score-display ${scoreClass}`
@@ -661,19 +688,19 @@ class UIManager {
     this.elements.apkInfo.innerHTML = `
       <div class="info-item">
         <span class="info-label">Name:</span>
-        <span class="info-value">${apkInfo.name || "Unknown"}</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">Package:</span>
-        <span class="info-value">${apkInfo.package_name || "Unknown"}</span>
+        <span class="info-value"><span class="math-inline">\{apkInfo\.name \|\| "Unknown"\}</span\>
+</div\>
+<div class\="info\-item"\>
+<span class\="info\-label"\>Package\:</span\>
+<span class\="info\-value"\></span>{apkInfo.package_name || "Unknown"}</span>
       </div>
       <div class="info-item">
         <span class="info-label">Version:</span>
-        <span class="info-value">${apkInfo.version_name || "Unknown"}</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">Size:</span>
-        <span class="info-value">${apkInfo.size || "Unknown"}</span>
+        <span class="info-value"><span class="math-inline">\{apkInfo\.version\_name \|\| "Unknown"\}</span\>
+</div\>
+<div class\="info\-item"\>
+<span class\="info\-label"\>Size\:</span\>
+<span class\="info\-value"\></span>{apkInfo.size || "Unknown"}</span>
       </div>
     `
   }
@@ -685,28 +712,28 @@ class UIManager {
           <div class="permission-dot dangerous"></div>
           <span>Dangerous</span>
         </div>
-        <span class="permission-count">${permissionsSummary.dangerous}</span>
-      </div>
-      <div class="permission-type">
-        <div class="permission-type-info">
-          <div class="permission-dot normal"></div>
-          <span>Normal</span>
-        </div>
-        <span class="permission-count">${permissionsSummary.normal}</span>
+        <span class="permission-count"><span class="math-inline">\{permissionsSummary\.dangerous\}</span\>
+</div\>
+<div class\="permission\-type"\>
+<div class\="permission\-type\-info"\>
+<div class\="permission\-dot normal"\></div\>
+<span\>Normal</span\>
+</div\>
+<span class\="permission\-count"\></span>{permissionsSummary.normal}</span>
       </div>
       <div class="permission-type">
         <div class="permission-type-info">
           <div class="permission-dot signature"></div>
           <span>Signature</span>
         </div>
-        <span class="permission-count">${permissionsSummary.signature}</span>
-      </div>
-      <div class="permission-type">
-        <div class="permission-type-info">
-          <div class="permission-dot unknown"></div>
-          <span>Unknown</span>
-        </div>
-        <span class="permission-count">${permissionsSummary.unknown}</span>
+        <span class="permission-count"><span class="math-inline">\{permissionsSummary\.signature\}</span\>
+</div\>
+<div class\="permission\-type"\>
+<div class\="permission\-type\-info"\>
+<div class\="permission\-dot unknown"\></div\>
+<span\>Unknown</span\>
+</div\>
+<span class\="permission\-count"\></span>{permissionsSummary.unknown}</span>
       </div>
     `
   }
@@ -718,14 +745,14 @@ class UIManager {
     this.elements.obfuscationStatus.innerHTML = `
       <div class="obfuscation-icon ${isObfuscated ? "detected" : "not-detected"}">
         <svg class="icon" style="width: 3rem; height: 3rem;" viewBox="0 0 24 24">
-          ${
-            isObfuscated
-              ? '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/>'
-              : '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'
-          }
-        </svg>
-      </div>
-      <div class="obfuscation-text">${isObfuscated ? "Obfuscated" : "Not Obfuscated"}</div>
+          <span class="math-inline">\{
+isObfuscated
+? '<path d\="M12 22s8\-4 8\-10V5l\-8\-3\-8 3v7c0 6 8 10 8 10z"/\><path d\="M12 8v4M12 16h\.01"/\>'
+\: '<path d\="M12 22s8\-4 8\-10V5l\-8\-3\-8 3v7c0 6 8 10 8 10z"/\>'
+\}
+</svg\>
+</div\>
+<div class\="obfuscation\-text"\></span>{isObfuscated ? "Obfuscated" : "Not Obfuscated"}</div>
       <div class="obfuscation-confidence">Confidence: ${confidence}%</div>
     `
   }
@@ -736,9 +763,9 @@ class UIManager {
         (finding) => `
           <div class="finding-item ${finding.type}">
             <svg class="icon" viewBox="0 0 24 24">
-              ${this.getFindingIcon(finding.type)}
-            </svg>
-            <span>${finding.message}</span>
+              <span class="math-inline">\{this\.getFindingIcon\(finding\.type\)\}
+</svg\>
+<span\></span>{finding.message}</span>
           </div>
         `,
       )
@@ -757,7 +784,7 @@ class UIManager {
           <div class="permission-item">
             <div class="permission-header">
               <span class="permission-name">${permission.name}</span>
-              <span class="permission-level ${permission.protection_level || "unknown"}">${permission.protection_level || "unknown"}</span>
+              <span class="permission-level <span class="math-inline">\{permission\.protection\_level \|\| "unknown"\}"\></span>{permission.protection_level || "unknown"}</span>
             </div>
             <div class="permission-description">${permission.description || "No description available"}</div>
           </div>
@@ -776,14 +803,14 @@ class UIManager {
     <div class="obfuscation-header">
       <div class="obfuscation-status">
         <svg class="icon obfuscation-icon" viewBox="0 0 24 24">
-          ${
-            isObfuscated
-              ? '<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/><path d="M12 7v4m0 4h.01"/>'
-              : '<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/><path d="M9 12l2 2 4-4"/>'
-          }
-        </svg>
-        <div>
-          <h4>${isObfuscated ? "🔒 Obfuscation Detected" : "✅ No Significant Obfuscation"}</h4>
+          <span class="math-inline">\{
+isObfuscated
+? '<path d\="M12 1L3 5v6c0 5\.55 3\.84 10\.74 9 12 5\.16\-1\.26 9\-6\.45 9\-12V5l\-9\-4z"/\><path d\="M12 7v4m0 4h\.01"/\>'
+\: '<path d\="M12 1L3 5v6c0 5\.55 3\.84 10\.74 9 12 5\.16\-1\.26 9\-6\.45 9\-12V5l\-9\-4z"/\><path d\="M9 12l2 2 4\-4"/\>'
+\}
+</svg\>
+<div\>
+<h4\></span>{isObfuscated ? "🔒 Obfuscation Detected" : "✅ No Significant Obfuscation"}</h4>
           <p class="confidence-text">Confidence Level: <strong>${confidence}%</strong></p>
           ${codeSnippets.length > 0 ? `<p class="snippets-count">Found <strong>${codeSnippets.length}</strong> obfuscated code snippets</p>` : ""}
         </div>
@@ -818,28 +845,26 @@ class UIManager {
       <div class="indicator-card">
         <div class="indicator-header">
           <div class="indicator-title">
-            <span class="indicator-icon">${indicatorDetails.icon}</span>
-            <span class="indicator-name">${indicator.description || indicatorDetails.name}</span>
+            <span class="indicator-icon"><span class="math-inline">\{indicatorDetails\.icon\}</span\>
+<span class\="indicator\-name"\></span>{indicator.description || indicatorDetails.name}</span>
           </div>
           <div class="indicator-severity ${indicator.severity}">
-            ${indicator.severity.toUpperCase()}
-          </div>
-        </div>
-        
-        <div class="indicator-stats">
-          <div class="stat-item">
-            <span class="stat-label">Occurrences:</span>
-            <span class="stat-value">${indicator.count.toLocaleString()}</span>
+            <span class="math-inline">\{indicator\.severity\.toUpperCase\(\)\}
+</div\>
+</div\>
+<div class\="indicator\-stats"\>
+<div class\="stat\-item"\>
+<span class\="stat\-label"\>Occurrences\:</span\>
+<span class\="stat\-value"\></span>{indicator.count.toLocaleString()}</span>
           </div>
           <div class="stat-item">
             <span class="stat-label">Impact:</span>
-            <span class="stat-value">${indicatorDetails.impact}</span>
-          </div>
-        </div>
-
-        <div class="indicator-description">
-          <h5>Why this indicates obfuscation:</h5>
-          <p>${indicatorDetails.explanation}</p>
+            <span class="stat-value"><span class="math-inline">\{indicatorDetails\.impact\}</span\>
+</div\>
+</div\>
+<div class\="indicator\-description"\>
+<h5\>Why this indicates obfuscation\:</h5\>
+<p\></span>{indicatorDetails.explanation}</p>
         </div>
 
         <div class="security-implications">
@@ -883,12 +908,12 @@ class UIManager {
             <li>Use additional security scanning tools</li>
             <li>Check for similar apps with better transparency</li>
             <li>Review user reviews and ratings</li>
+            <li>Keep your device and security software updated</li>
           </ul>
         </div>
         <div class="recommendation-card low-priority">
           <h5>🟢 General Security</h5>
           <ul>
-            <li>Keep your device and security software updated</li>
             <li>Use app sandboxing when possible</li>
             <li>Regular security audits of installed apps</li>
           </ul>
@@ -921,35 +946,32 @@ class UIManager {
         <h4>🔍 Real Obfuscated Code Snippets Found</h4>
         <div class="snippets-summary">
           <span class="total-snippets">Total: ${totalSnippets.toLocaleString()} snippets</span>
-          <span class="pages-info">Pages: ${totalPages}</span>
+          <span class="pages-info">Pages: <span class="math-inline">\{totalPages\}</span\>
+</div\>
+</div\>
+<div class\="pagination\-controls top\-pagination"\>
+<button class\="pagination\-btn" id\="prevBtn" onclick\="changeObfuscationPage\(\-1\)" disabled\>
+<svg class\="icon" viewBox\="0 0 24 24"\><path d\="M15 18l\-6\-6 6\-6"/\></svg\>
+Previous
+</button\>
+<div class\="page\-info"\>
+<span\>Page <span id\="currentPage"\>1</span\> of <span id\="totalPages"\></span>{totalPages}</span></span>
         </div>
-      </div>
-      
-      <div class="pagination-controls top-pagination">
-        <button class="pagination-btn" id="prevBtn" onclick="changeObfuscationPage(-1)" disabled>
-          <svg class="icon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-          Previous
-        </button>
-        <div class="page-info">
-          <span>Page <span id="currentPage">1</span> of <span id="totalPages">${totalPages}</span></span>
-        </div>
-        <button class="pagination-btn" id="nextBtn" onclick="changeObfuscationPage(1)" ${totalPages <= 1 ? "disabled" : ""}>
-          Next
-          <svg class="icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-
-      <div id="codeSnippetsContainer" class="code-snippets-container">
-        <!-- Code snippets will be populated here -->
-      </div>
-
-      <div class="pagination-controls bottom-pagination">
-        <button class="pagination-btn" onclick="changeObfuscationPage(-1)" disabled>
-          <svg class="icon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-          Previous
-        </button>
-        <div class="page-info">
-          <span>Page <span class="current-page-bottom">1</span> of <span class="total-pages-bottom">${totalPages}</span></span>
+        <button class="pagination-btn" id="nextBtn" onclick="changeObfuscationPage(1)" <span class="math-inline">\{totalPages <\= 1 ? "disabled" \: ""\}\>
+Next
+<svg class\="icon" viewBox\="0 0 24 24"\><path d\="M9 18l6\-6\-6\-6"/\></svg\>
+</button\>
+</div\>
+<div id\="codeSnippetsContainer" class\="code\-snippets\-container"\>
+<\!\-\- Code snippets will be populated here \-\-\>
+</div\>
+<div class\="pagination\-controls bottom\-pagination"\>
+<button class\="pagination\-btn" onclick\="changeObfuscationPage\(\-1\)" disabled\>
+<svg class\="icon" viewBox\="0 0 24 24"\><path d\="M15 18l\-6\-6 6\-6"/\></svg\>
+Previous
+</button\>
+<div class\="page\-info"\>
+<span\>Page <span class\="current\-page\-bottom"\>1</span\> of <span class\="total\-pages\-bottom"\></span>{totalPages}</span></span>
         </div>
         <button class="pagination-btn" onclick="changeObfuscationPage(1)" ${totalPages <= 1 ? "disabled" : ""}>
           Next
@@ -992,7 +1014,7 @@ class UIManager {
     const totalPages = Math.ceil(pagination.allSnippets.length / pagination.snippetsPerPage)
 
     console.log(
-      `Showing snippets ${startIndex + 1}-${Math.min(endIndex, pagination.allSnippets.length)} of ${pagination.allSnippets.length}`,
+      `Showing snippets <span class="math-inline">\{startIndex \+ 1\}\-</span>{Math.min(endIndex, pagination.allSnippets.length)} of ${pagination.allSnippets.length}`,
     )
 
     let html = ""
@@ -1002,20 +1024,20 @@ class UIManager {
       <div class="code-snippet-card">
         <div class="snippet-header">
           <div class="snippet-info">
-            <span class="snippet-number">#${globalIndex}</span>
-            <span class="snippet-type">${snippet.type || "Code Pattern"}</span>
-            <span class="snippet-severity ${snippet.severity || "medium"}">${(snippet.severity || "medium").toUpperCase()}</span>
+            <span class="snippet-number">#<span class="math-inline">\{globalIndex\}</span\>
+<span class\="snippet\-type"\></span>{snippet.type || "Code Pattern"}</span>
+            <span class="snippet-severity <span class="math-inline">\{snippet\.severity \|\| "medium"\}"\></span>{(snippet.severity || "medium").toUpperCase()}</span>
           </div>
           <div class="snippet-location">
             <span class="file-path">${snippet.file || "Unknown file"}</span>
-            <span class="line-number">Lines ${snippet.line_start || "?"}-${snippet.line_end || "?"}</span>
+            <span class="line-number">Lines <span class="math-inline">\{snippet\.line\_start \|\| "?"\}\-</span>{snippet.line_end || "?"}</span>
           </div>
         </div>
         
         <div class="real-code-snippet">
           <div class="code-block">
-            <h6>Detected Pattern: ${snippet.matched_text ? this.escapeHtml(snippet.matched_text) : "Pattern match"}</h6>
-            <pre><code>${this.escapeHtml(snippet.code_snippet || snippet.matched_line || "Code not available")}</code></pre>
+            <h6>Detected Pattern: <span class="math-inline">\{snippet\.matched\_text ? this\.escapeHtml\(snippet\.matched\_text\) \: "Pattern match"\}</h6\>
+<pre\><code\></span>{this.escapeHtml(snippet.code_snippet || snippet.matched_line || "Code not available")}</code></pre>
           </div>
         </div>
       </div>
