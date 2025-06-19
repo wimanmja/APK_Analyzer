@@ -6,6 +6,7 @@ import hashlib
 
 class ObfuscationService:
     """Service for detecting code obfuscation in decompiled APK files"""
+    MAX_SNIPPETS_FOR_FRONTEND = 1000 # Anda bisa coba 500, 1000, atau 2000
     
     def __init__(self, socketio=None):
         self.socketio = socketio
@@ -175,6 +176,9 @@ class ObfuscationService:
                 {'high': 0, 'medium': 1, 'low': 2}.get(x.get('severity', 'low'), 2),
                 x.get('file', '')
             ))
+
+            if len(all_code_snippets) > self.MAX_SNIPPETS_FOR_FRONTEND:
+                logging.warning(f"Frontend: Too many snippets ({len(all_code_snippets)}), sending only {self.MAX_SNIPPETS_FOR_FRONTEND} for display.")
             
             result = {
                 'is_obfuscated': is_obfuscated,
