@@ -26,7 +26,9 @@
                 <p class="description">Upload your Android APK file for comprehensive security analysis</p>
                 
                 <form id="uploadForm">
-                    <div id="uploadArea" class="drop-area">
+                    <!-- FIXED: Changed class from "drop-area" to "upload-area" to match JavaScript -->
+                    <!-- FIXED: Removed hidden attribute from file input -->
+                    <div id="uploadArea" class="upload-area">
                         <div class="upload-icon">
                             <svg class="icon" viewBox="0 0 24 24">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"></path>
@@ -37,7 +39,8 @@
                         </div>
                         <p class="upload-text">Drag and drop your APK file here, or</p>
                         <span class="browse-text">browse files</span>
-                        <input type="file" id="fileInput" name="file" accept=".apk" required hidden>
+                        <!-- FIXED: Made file input visible but positioned off-screen -->
+                        <input type="file" id="fileInput" name="file" accept=".apk" required style="position: absolute; left: -9999px;">
                         <div id="fileName" class="file-name" style="display: none;"></div>
                     </div>
 
